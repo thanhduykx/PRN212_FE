@@ -28,20 +28,29 @@ namespace AssignmentPRN212.Views
 
                 if (!string.IsNullOrEmpty(result.Token))
                 {
-                    _apiService.SetToken(result.Token);
-                    MessageBox.Show($"Login Succesfully! Role: {result.Role}");
-                    var carListWindow = new CarListWindow(_apiService); // truyền ApiService đã có token
-                    carListWindow.Show();
+                    _apiService.SetToken(result.Token); // Set token cho ApiService
+
+                    if (result.Role == "Admin")
+                    {
+                        var mainWindow  = new MainWindow(_apiService,"Admin"); // AdminWindow có 2 button: Xem User, Xem Car
+                        mainWindow.Show();
+                    }
+                    else
+                    {
+                        var carListWindow = new CarListWindow(_apiService); // Staff hoặc Customer
+                        carListWindow.Show();
+                    }
+
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show($"Login Fail!");
+                    MessageBox.Show("Login failed! Kiểm tra email/password.");
                 }
             }
-            catch (System.Net.Http.HttpRequestException httpEx)
+            catch (System.Net.Http.HttpRequestException)
             {
-                MessageBox.Show($"Invalid Token or Account");
+                MessageBox.Show("Invalid Token or Account");
             }
             catch (System.Exception ex)
             {
@@ -51,5 +60,5 @@ namespace AssignmentPRN212.Views
 
     }
 
-  
+
 }

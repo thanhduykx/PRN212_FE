@@ -1,24 +1,37 @@
-﻿using System.Text;
+﻿using AssignmentPRN212.Services;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace AssignmentPRN212
+namespace AssignmentPRN212.Views
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly ApiService _apiService;
+        private readonly string _role;
+
+        public MainWindow(ApiService apiService, string role)
         {
             InitializeComponent();
+            _apiService = apiService;
+            _role = role; // ✅ Gán role
+
+            // Nếu không phải Admin, ẩn nút xem user
+            if (_role != "Admin")
+            {
+                ViewUsersButton.Visibility = Visibility.Collapsed;
+            }
+        }
+
+
+        private void ViewCarsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var carWindow = new CarListWindow(_apiService);
+            carWindow.ShowDialog();
+        }
+
+        private void ViewUsersButton_Click(object sender, RoutedEventArgs e)
+        {
+            var userWindow = new UserListWindow(_apiService);
+            userWindow.ShowDialog();
         }
     }
 }

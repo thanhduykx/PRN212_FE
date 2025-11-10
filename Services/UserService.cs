@@ -1,4 +1,5 @@
-﻿using AssignmentPRN212.Models;
+﻿using AssignmentPRN212.DTO;
+using AssignmentPRN212.Models;
 using System.Threading.Tasks;
 
 namespace AssignmentPRN212.Services
@@ -6,7 +7,7 @@ namespace AssignmentPRN212.Services
     public class UserService
     {
         private readonly ApiService _api;
-
+        private readonly ApiService _apiService;
         public UserService(ApiService api)
         {
             _api = api;
@@ -21,6 +22,13 @@ namespace AssignmentPRN212.Services
                 _api.SetToken(response.Token); // lưu token để gọi API khác
 
             return response;
+        }
+        public async Task<List<UserDTO>> GetAllUsersAsync()
+        {
+            var response = await _apiService.GetAsync<ApiResponse<DataWrapper<UserDTO>>>("User");
+            if (response?.Data?.Values != null)
+                return response.Data.Values;
+            return new List<UserDTO>();
         }
     }
 }

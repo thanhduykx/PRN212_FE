@@ -1,12 +1,68 @@
-﻿<Window x:Class="AssignmentPRN212.MainWindow"
+﻿<Window x:Class="AssignmentPRN212.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AssignmentPRN212"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Admin" Height="300" Width="400"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#F5F5F5">
 
+    <Grid>
+        <Border CornerRadius="10" Background="White" Padding="20" Margin="20" 
+                HorizontalAlignment="Center" VerticalAlignment="Center"  >
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <TextBlock Text="Manager System" FontSize="20" FontWeight="Bold" 
+                           Foreground="#333" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+                <Button x:Name="ViewCarsButton" Content="Xem xe" Width="180" Height="40" 
+                        Margin="0,5" Background="#4CAF50" Foreground="White" FontWeight="SemiBold"
+                        BorderThickness="0" Cursor="Hand"
+                        Click="ViewCarsButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" 
+                                                CornerRadius="5">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#45A049"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button x:Name="ViewUsersButton" Content="Xem user" Width="180" Height="40" 
+                        Margin="0,5" Background="#2196F3" Foreground="White" FontWeight="SemiBold"
+                        BorderThickness="0" Cursor="Hand"
+                        Click="ViewUsersButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" 
+                                                CornerRadius="5">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#1976D2"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

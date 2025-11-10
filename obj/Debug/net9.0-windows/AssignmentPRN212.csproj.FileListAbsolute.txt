@@ -34,3 +34,5 @@ C:\Project_PRN\AssignmentPRN212\AssignmentPRN212\obj\Debug\net9.0-windows\Assign
 C:\Project_PRN\AssignmentPRN212\AssignmentPRN212\obj\Debug\net9.0-windows\AssignmentPRN212.genruntimeconfig.cache
 C:\Project_PRN\AssignmentPRN212\AssignmentPRN212\obj\Debug\net9.0-windows\ref\AssignmentPRN212.dll
 C:\Project_PRN\AssignmentPRN212\AssignmentPRN212\bin\Debug\net9.0-windows\appsettings.json
+C:\Project_PRN\AssignmentPRN212\AssignmentPRN212\obj\Debug\net9.0-windows\Views\UserListWindow.baml
+C:\Project_PRN\AssignmentPRN212\AssignmentPRN212\obj\Debug\net9.0-windows\Views\UserListWindow.g.cs
