@@ -6,84 +6,36 @@ namespace AssignmentPRN212.Services
 {
     public class CarService
     {
-        private readonly ApiService _apiService;
+        private readonly ApiService _api;
 
-        public CarService(ApiService apiService)
+        public CarService(ApiService api)
         {
-            _apiService = apiService;
+            _api = api;
         }
 
-        // GET danh sách xe
+        // Lấy danh sách xe
         public async Task<List<CarDTO>> GetAllCarsAsync()
         {
-            var response = await _apiService.GetAsync<ApiResponse<DataWrapper<CarDTO>>>("Car");
+            // API trả về: { message, data: { $values: [...] } }
+            var response = await _api.GetAsync<ApiResponse<DataWrapper<CarDTO>>>("Car");
             return response?.Data?.Values ?? new List<CarDTO>();
         }
 
-        // POST thêm xe
-        public async Task<CarDTO?> AddCarAsync(CarDTO car)
+        public async Task<CarDTO?> AddCarAsync(CreateCarDTO car)
         {
-            var payload = new
-            {
-                car.Name,
-                car.Model,
-                car.Seats,
-                car.SizeType,
-                car.TrunkCapacity,
-                car.BatteryType,
-                car.BatteryDuration,
-                car.RentPricePerDay,
-                car.RentPricePerHour,
-                car.RentPricePerDayWithDriver,
-                car.RentPricePerHourWithDriver,
-                car.ImageUrl,
-                car.ImageUrl2,
-                car.ImageUrl3,
-                car.Status,
-                car.IsActive,
-                car.IsDeleted
-            };
-
-            var response = await _apiService.PostAsync<object, ApiResponse<CarDTO>>("Car", payload);
+            var response = await _api.PostAsync<CreateCarDTO, ApiResponse<CarDTO>>("Car", car);
             return response?.Data;
         }
 
-        // PUT cập nhật xe
-        public async Task<CarDTO?> UpdateCarAsync(CarDTO car)
+        public async Task<CarDTO?> UpdateCarAsync(UpdateCarDTO car)
         {
-            var now = DateTime.UtcNow;
-
-            var payload = new
-            {
-                car.Name,
-                car.Model,
-                car.Seats,
-                car.SizeType,
-                car.TrunkCapacity,
-                car.BatteryType,
-                car.BatteryDuration,
-                car.RentPricePerDay,
-                car.RentPricePerHour,
-                car.RentPricePerDayWithDriver,
-                car.RentPricePerHourWithDriver,
-                car.ImageUrl,
-                car.ImageUrl2,
-                car.ImageUrl3,
-                car.Status,
-                car.IsActive,
-                car.IsDeleted,
-                CreatedAt = now,
-                UpdatedAt = now
-            };
-
-            var response = await _apiService.PutAsync<object, ApiResponse<CarDTO>>($"Car/{car.Id}", payload);
+            var response = await _api.PutAsync<UpdateCarDTO, ApiResponse<CarDTO>>($"Car/{car.Id}", car);
             return response?.Data;
         }
 
-        // DELETE xe
         public async Task<bool> DeleteCarAsync(int id)
         {
-            var response = await _apiService.DeleteAsync<ApiResponse<object>>($"Car/{id}");
+            var response = await _api.DeleteAsync<ApiResponse<object>>($"Car/{id}");
             return response != null;
         }
     }

@@ -1,22 +1,19 @@
 ﻿<Window x:Class="AssignmentPRN212.Views.CarListWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        WindowStartupLocation="CenterScreen"
-        Title="Danh sách xe" Height="720" Width="1500">
+        Title="Danh sách xe" Height="600" Width="1000">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
-        <!-- DataGrid -->
-        <DataGrid x:Name="CarDataGrid" AutoGenerateColumns="False" Grid.Row="0"
-          SelectionChanged="CarDataGrid_SelectionChanged" IsReadOnly="True">
+        <DataGrid x:Name="CarDataGrid" AutoGenerateColumns="False" Grid.Row="0" 
+                  SelectionChanged="CarDataGrid_SelectionChanged" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
                 <DataGridTextColumn Header="Model" Binding="{Binding Model}" Width="*"/>
-                <DataGridTextColumn Header="Seats" Binding="{Binding Seats}" Width="50"/>
                 <DataGridTextColumn Header="Seats" Binding="{Binding Seats}" Width="50"/>
                 <DataGridTextColumn Header="Size" Binding="{Binding SizeType}" Width="80"/>
                 <DataGridTextColumn Header="Trunk" Binding="{Binding TrunkCapacity}" Width="80"/>
@@ -26,19 +23,12 @@
                 <DataGridTextColumn Header="Rent/Hour" Binding="{Binding RentPricePerHour}" Width="100"/>
                 <DataGridTextColumn Header="Rent/Day w/Driver" Binding="{Binding RentPricePerDayWithDriver}" Width="120"/>
                 <DataGridTextColumn Header="Rent/Hour w/Driver" Binding="{Binding RentPricePerHourWithDriver}" Width="120"/>
-                <DataGridTextColumn Header="ImageUrl" Binding="{Binding ImageUrl}" Width="150"/>
-                <DataGridTextColumn Header="ImageUrl2" Binding="{Binding ImageUrl2}" Width="150"/>
-                <DataGridTextColumn Header="ImageUrl3" Binding="{Binding ImageUrl3}" Width="150"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="80"/>
             </DataGrid.Columns>
         </DataGrid>
 
-
-        <!-- Panel nhập liệu -->
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical" Margin="0,10,0,0">
-
-                <!-- Row 1: Name, Model, Seats -->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                     <Label Content="Name:" Width="80"/>
                     <TextBox x:Name="NameTextBox" Width="150"/>
@@ -48,7 +38,6 @@
                     <TextBox x:Name="SeatsTextBox" Width="50"/>
                 </StackPanel>
 
-                <!-- Row 2: Size, Trunk, BatteryType, Duration, Status -->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                     <Label Content="Size:" Width="80"/>
                     <TextBox x:Name="SizeTextBox" Width="100"/>
@@ -62,7 +51,6 @@
                     <TextBox x:Name="StatusTextBox" Width="50"/>
                 </StackPanel>
 
-                <!-- Row 3: Rent Prices -->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                     <Label Content="Rent/Day:" Width="80"/>
                     <TextBox x:Name="RentTextBox" Width="80"/>
@@ -74,7 +62,6 @@
                     <TextBox x:Name="RentHourDriverTextBox" Width="80"/>
                 </StackPanel>
 
-                <!-- Row 4: Image URLs -->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                     <Label Content="ImageUrl:" Width="80"/>
                     <TextBox x:Name="ImageUrlTextBox" Width="200"/>
@@ -84,13 +71,14 @@
                     <TextBox x:Name="ImageUrl3TextBox" Width="200"/>
                 </StackPanel>
 
-                <!-- Row 5: Buttons -->
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <Button Content="Add" Width="80" Click="AddButton_Click"/>
                     <Button Content="Update" Width="80" Margin="10,0,0,0" Click="UpdateButton_Click"/>
                     <Button Content="Delete" Width="80" Margin="10,0,0,0" Click="DeleteButton_Click"/>
                 </StackPanel>
-
+                <StackPanel>
+                    <Button Content="AI Phân tích" Width="120" Margin="10,0,0,0" Click="OpenAIWindow_Click"/>
+                </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>

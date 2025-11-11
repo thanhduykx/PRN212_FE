@@ -1,0 +1,343 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Models\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\views\\aiwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\views\\aiwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\dto\\cardto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\views\\carlistwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\views\\carlistwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\views\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\services\\airesponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\services\\carservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\views\\registerwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\views\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\services\\rentallocationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\models\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\models\\userloginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:userloginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\dto\\confirmemailrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginWindow.xaml",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\LoginWindow.xaml",
+              "RelativeDocumentMoniker": "..\\Views\\LoginWindow.xaml",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\LoginWindow.xaml",
+              "RelativeToolTip": "..\\Views\\LoginWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-11T08:27:03.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AIWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\AIWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\Views\\AIWindow.xaml.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\AIWindow.xaml.cs",
+              "RelativeToolTip": "..\\Views\\AIWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T08:25:56.414Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AIWindow.xaml",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\AIWindow.xaml",
+              "RelativeDocumentMoniker": "..\\Views\\AIWindow.xaml",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\AIWindow.xaml",
+              "RelativeToolTip": "..\\Views\\AIWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-11T08:25:28.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AIResponse.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\AIResponse.cs",
+              "RelativeDocumentMoniker": "..\\Services\\AIResponse.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\AIResponse.cs",
+              "RelativeToolTip": "..\\Services\\AIResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T08:24:55.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RegisterWindow.xaml",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\RegisterWindow.xaml",
+              "RelativeDocumentMoniker": "..\\Views\\RegisterWindow.xaml",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\RegisterWindow.xaml",
+              "RelativeToolTip": "..\\Views\\RegisterWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-11T08:19:20.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\MainWindow.xaml.cs",
+              "RelativeToolTip": "..\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAmwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T08:11:33.435Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LoginWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\LoginWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\Views\\LoginWindow.xaml.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\LoginWindow.xaml.cs",
+              "RelativeToolTip": "..\\Views\\LoginWindow.xaml.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAqwCcAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T08:11:26.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApiService.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\ApiService.cs",
+              "RelativeDocumentMoniker": "..\\Services\\ApiService.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\ApiService.cs",
+              "RelativeToolTip": "..\\Services\\ApiService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T08:10:38.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UserLoginRequest.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Models\\UserLoginRequest.cs",
+              "RelativeDocumentMoniker": "UserLoginRequest.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Models\\UserLoginRequest.cs",
+              "RelativeToolTip": "UserLoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T08:10:34.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ConfirmEmailRequest.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\DTO\\ConfirmEmailRequest.cs",
+              "RelativeDocumentMoniker": "..\\DTO\\ConfirmEmailRequest.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\DTO\\ConfirmEmailRequest.cs",
+              "RelativeToolTip": "..\\DTO\\ConfirmEmailRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T08:10:11.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CarDTO.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\DTO\\CarDTO.cs",
+              "RelativeDocumentMoniker": "..\\DTO\\CarDTO.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\DTO\\CarDTO.cs",
+              "RelativeToolTip": "..\\DTO\\CarDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T08:07:37.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\appsettings.json",
+              "RelativeDocumentMoniker": "..\\appsettings.json",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\appsettings.json",
+              "RelativeToolTip": "..\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-11T07:54:53.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CarListWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CarListWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\Views\\CarListWindow.xaml.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CarListWindow.xaml.cs",
+              "RelativeToolTip": "..\\Views\\CarListWindow.xaml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAqwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T07:40:01.111Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CarListWindow.xaml",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CarListWindow.xaml",
+              "RelativeDocumentMoniker": "..\\Views\\CarListWindow.xaml",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CarListWindow.xaml",
+              "RelativeToolTip": "..\\Views\\CarListWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-11T07:39:05.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Car.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Models\\Car.cs",
+              "RelativeDocumentMoniker": "Car.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Models\\Car.cs",
+              "RelativeToolTip": "Car.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T07:38:22.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RentalLocationService.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\RentalLocationService.cs",
+              "RelativeDocumentMoniker": "..\\Services\\RentalLocationService.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\RentalLocationService.cs",
+              "RelativeToolTip": "..\\Services\\RentalLocationService.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAmwCQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T07:37:47.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ApiResponse.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Models\\ApiResponse.cs",
+              "RelativeDocumentMoniker": "ApiResponse.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Models\\ApiResponse.cs",
+              "RelativeToolTip": "ApiResponse.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAsAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T07:37:08.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CarService.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\CarService.cs",
+              "RelativeDocumentMoniker": "..\\Services\\CarService.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\CarService.cs",
+              "RelativeToolTip": "..\\Services\\CarService.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAiwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T07:37:01.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\DTO\\UserDTO.cs",
+              "RelativeDocumentMoniker": "..\\DTO\\UserDTO.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\DTO\\UserDTO.cs",
+              "RelativeToolTip": "..\\DTO\\UserDTO.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAxwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T07:35:47.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "..\\Services\\UserService.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\UserService.cs",
+              "RelativeToolTip": "..\\Services\\UserService.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAmwCwAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T07:35:38.645Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

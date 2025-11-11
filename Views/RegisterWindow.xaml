@@ -1,7 +1,7 @@
 <Window x:Class="AssignmentPRN212.Views.RegisterWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Đăng ký" Height="450" Width="450" WindowStartupLocation="CenterScreen"
+        Title="Đăng ký" Height="550" Width="500" WindowStartupLocation="CenterScreen"
         Background="#FF1E1E2D" ResizeMode="NoResize" WindowStyle="None">
 
     <Border CornerRadius="15" Background="#FF2D2D44" Padding="20" Margin="10">

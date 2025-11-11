@@ -1,0 +1,56 @@
+﻿<Window x:Class="AssignmentPRN212.Views.AIWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Phân tích AI" Height="500" Width="600"
+        WindowStartupLocation="CenterScreen"
+        Background="#F4F4F9">
+
+    <Grid Margin="20">
+        <Border Background="White" CornerRadius="10" Padding="15" 
+               >
+            <StackPanel Orientation="Vertical" >
+
+                <!-- Loading -->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,10">
+                    <ProgressBar x:Name="LoadingProgressBar" Width="150" Height="20" 
+                                 IsIndeterminate="True" Visibility="Collapsed"/>
+                    <TextBlock x:Name="LoadingTextBlock" Text="Đang phân tích..." 
+                               Foreground="#007ACC" FontWeight="Bold" 
+                               Margin="10,0,0,0" VerticalAlignment="Center" 
+                               Visibility="Collapsed"/>
+                </StackPanel>
+
+                <!-- Kết quả AI -->
+                <TextBox x:Name="ResultTextBox" TextWrapping="Wrap" Height="300" 
+                         VerticalScrollBarVisibility="Auto" IsReadOnly="True"
+                         Background="#F0F0F0" BorderBrush="#CCC" BorderThickness="1"
+                         Padding="10" FontFamily="Segoe UI" FontSize="14"/>
+
+                <!-- Button -->
+                <Button Content="Phân tích lại" Width="150" Height="35" Margin="0,15,0,0"
+                        Background="#007ACC" Foreground="White" FontWeight="Bold"
+                        BorderThickness="0" Click="AnalyzeButton_Click"
+                        HorizontalAlignment="Left" Cursor="Hand">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#007ACC"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#005A9E"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="#003F6B"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
