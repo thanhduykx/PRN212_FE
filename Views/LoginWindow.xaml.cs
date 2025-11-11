@@ -58,7 +58,18 @@ namespace AssignmentPRN212.Views
             }
         }
 
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            var registerWindow = new RegisterWindow();
+            registerWindow.Show();
+            this.Close();
+        }
+
+        private void ForgotPassword_Click(object sender, RoutedEventArgs e)
+        {
+            var forgotPasswordWindow = new ForgotPasswordWindow();
+            forgotPasswordWindow.Show();
+            this.Close();
+        }
     }
-
-
 }
