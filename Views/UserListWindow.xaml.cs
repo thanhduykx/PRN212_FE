@@ -86,8 +86,13 @@ namespace AssignmentPRN212.Views
                     return;
                 }
 
-                var addedUser = await _userService.AddUserAsync(newUser);
-
+                var addedUser = await _userService.AddStaffAsync(new CreateStaffUserDTO
+                {
+                    Email = newUser.Email,
+                    FullName = newUser.FullName,
+                    Password = "Default@123", // Mật khẩu mặc định
+                    Role = newUser.Role
+                    });
                 if (addedUser != null)
                 {
                     MessageBox.Show("Thêm user thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -128,12 +133,23 @@ namespace AssignmentPRN212.Views
                     return;
                 }
 
+                // Cập nhật giá trị cho _selectedUser
                 _selectedUser.Email = EmailTextBox.Text.Trim();
                 _selectedUser.FullName = FullNameTextBox.Text.Trim();
                 _selectedUser.Role = RoleTextBox.Text.Trim();
                 _selectedUser.IsActive = IsActiveCheckBox.IsChecked ?? false;
 
-                var updatedUser = await _userService.UpdateUserAsync(_selectedUser);
+                // Tạo DTO cho service
+                var updateDto = new UpdateUserDTO
+                {
+                    Id = _selectedUser.Id,
+                    Email = _selectedUser.Email,
+                    FullName = _selectedUser.FullName,
+                    Role = _selectedUser.Role,
+                    IsActive = _selectedUser.IsActive
+                };
+
+                var updatedUser = await _userService.UpdateUserAsync(updateDto);
 
                 if (updatedUser != null)
                 {
@@ -170,6 +186,7 @@ namespace AssignmentPRN212.Views
             {
                 try
                 {
+                    // Sử dụng Id để xóa
                     var success = await _userService.DeleteUserAsync(_selectedUser.Id);
 
                     if (success)
@@ -189,6 +206,7 @@ namespace AssignmentPRN212.Views
                 }
             }
         }
+
 
         private void ClearInputs()
         {

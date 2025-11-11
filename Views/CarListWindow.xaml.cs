@@ -44,6 +44,7 @@ namespace AssignmentPRN212.Views
             if (CarDataGrid.SelectedItem is CarDTO selectedCar)
             {
                 _selectedCar = selectedCar;
+
                 NameTextBox.Text = selectedCar.Name;
                 ModelTextBox.Text = selectedCar.Model;
                 SeatsTextBox.Text = selectedCar.Seats.ToString();
@@ -53,62 +54,23 @@ namespace AssignmentPRN212.Views
                 BatteryDurationTextBox.Text = selectedCar.BatteryDuration.ToString();
                 RentTextBox.Text = selectedCar.RentPricePerDay.ToString();
                 StatusTextBox.Text = selectedCar.Status.ToString();
+
+                // Nếu bạn thêm các TextBox mới cho những trường khác
+                RentHourTextBox.Text = selectedCar.RentPricePerHour.ToString();
+                RentDayDriverTextBox.Text = selectedCar.RentPricePerDayWithDriver.ToString();
+                RentHourDriverTextBox.Text = selectedCar.RentPricePerHourWithDriver.ToString();
+                ImageUrlTextBox.Text = selectedCar.ImageUrl;
+                ImageUrl2TextBox.Text = selectedCar.ImageUrl2;
+                ImageUrl3TextBox.Text = selectedCar.ImageUrl3;
             }
         }
+
 
         private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Validation
-                if (string.IsNullOrWhiteSpace(NameTextBox.Text) || string.IsNullOrWhiteSpace(ModelTextBox.Text))
-                {
-                    MessageBox.Show("Tên và Model không được để trống.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                if (!int.TryParse(SeatsTextBox.Text, out int seats) || seats <= 0)
-                {
-                    MessageBox.Show("Số ghế phải là số nguyên dương.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                if (!int.TryParse(TrunkTextBox.Text, out int trunk) || trunk < 0)
-                {
-                    MessageBox.Show("Dung tích cốp phải là số nguyên không âm.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                if (!int.TryParse(BatteryDurationTextBox.Text, out int batteryDuration) || batteryDuration < 0)
-                {
-                    MessageBox.Show("Thời lượng pin phải là số nguyên không âm.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                if (!double.TryParse(RentTextBox.Text, out double rentPrice) || rentPrice < 0)
-                {
-                    MessageBox.Show("Giá thuê phải là số không âm.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                if (!int.TryParse(StatusTextBox.Text, out int status) || (status != 0 && status != 1))
-                {
-                    MessageBox.Show("Status phải là 0 hoặc 1.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                var newCar = new CarDTO
-                {
-                    Name = NameTextBox.Text.Trim(),
-                    Model = ModelTextBox.Text.Trim(),
-                    Seats = seats,
-                    SizeType = SizeTextBox.Text.Trim(),
-                    TrunkCapacity = trunk,
-                    BatteryType = BatteryTypeTextBox.Text.Trim(),
-                    BatteryDuration = batteryDuration,
-                    RentPricePerDay = rentPrice,
-                    Status = status
-                };
+                if (!ValidateInputs(out CarDTO newCar)) return;
 
                 var addedCar = await _carService.AddCarAsync(newCar);
 
@@ -120,7 +82,7 @@ namespace AssignmentPRN212.Views
                 }
                 else
                 {
-                    MessageBox.Show("Thêm xe thất bại. Kiểm tra dữ liệu hoặc token.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Thêm xe thất bại. Kiểm tra token hoặc dữ liệu.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)
@@ -128,7 +90,6 @@ namespace AssignmentPRN212.Views
                 MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
 
         private async void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
@@ -140,56 +101,12 @@ namespace AssignmentPRN212.Views
 
             try
             {
-                // Validation
-                if (string.IsNullOrWhiteSpace(NameTextBox.Text) || string.IsNullOrWhiteSpace(ModelTextBox.Text))
-                {
-                    MessageBox.Show("Tên và Model không được để trống.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
+                if (!ValidateInputs(out CarDTO updatedCar)) return;
 
-                if (!int.TryParse(SeatsTextBox.Text, out int seats) || seats <= 0)
-                {
-                    MessageBox.Show("Số ghế phải là số nguyên dương.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
+                updatedCar.Id = _selectedCar.Id;
+                var result = await _carService.UpdateCarAsync(updatedCar);
 
-                if (!int.TryParse(TrunkTextBox.Text, out int trunk) || trunk < 0)
-                {
-                    MessageBox.Show("Dung tích cốp phải là số nguyên không âm.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                if (!int.TryParse(BatteryDurationTextBox.Text, out int batteryDuration) || batteryDuration < 0)
-                {
-                    MessageBox.Show("Thời lượng pin phải là số nguyên không âm.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                if (!double.TryParse(RentTextBox.Text, out double rentPrice) || rentPrice < 0)
-                {
-                    MessageBox.Show("Giá thuê phải là số không âm.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                if (!int.TryParse(StatusTextBox.Text, out int status) || (status != 0 && status != 1))
-                {
-                    MessageBox.Show("Status phải là 0 hoặc 1.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                _selectedCar.Name = NameTextBox.Text.Trim();
-                _selectedCar.Model = ModelTextBox.Text.Trim();
-                _selectedCar.Seats = seats;
-                _selectedCar.SizeType = SizeTextBox.Text.Trim();
-                _selectedCar.TrunkCapacity = trunk;
-                _selectedCar.BatteryType = BatteryTypeTextBox.Text.Trim();
-                _selectedCar.BatteryDuration = batteryDuration;
-                _selectedCar.RentPricePerDay = rentPrice;
-                _selectedCar.Status = status;
-
-                var updatedCar = await _carService.UpdateCarAsync(_selectedCar);
-
-                if (updatedCar != null)
+                if (result != null)
                 {
                     MessageBox.Show("Cập nhật xe thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
                     await LoadCars();
@@ -214,18 +131,14 @@ namespace AssignmentPRN212.Views
                 return;
             }
 
-            var result = MessageBox.Show(
-                $"Bạn có chắc chắn muốn xóa xe: {_selectedCar.Name} ({_selectedCar.Model})?",
-                "Xác nhận xóa",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Question);
+            var result = MessageBox.Show($"Bạn có chắc chắn muốn xóa xe: {_selectedCar.Name} ({_selectedCar.Model})?",
+                "Xác nhận xóa", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
             {
                 try
                 {
                     var success = await _carService.DeleteCarAsync(_selectedCar.Id);
-
                     if (success)
                     {
                         MessageBox.Show("Xóa xe thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -242,6 +155,68 @@ namespace AssignmentPRN212.Views
                     MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+        }
+
+        private bool ValidateInputs(out CarDTO car)
+        {
+            car = new CarDTO();
+
+            if (string.IsNullOrWhiteSpace(NameTextBox.Text) || string.IsNullOrWhiteSpace(ModelTextBox.Text))
+            {
+                MessageBox.Show("Tên và Model không được để trống.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            if (!int.TryParse(SeatsTextBox.Text, out int seats) || seats <= 0)
+            {
+                MessageBox.Show("Số ghế phải là số nguyên dương.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            if (!int.TryParse(TrunkTextBox.Text, out int trunk) || trunk < 0)
+            {
+                MessageBox.Show("Dung tích cốp phải là số nguyên không âm.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            if (!int.TryParse(BatteryDurationTextBox.Text, out int batteryDuration) || batteryDuration < 0)
+            {
+                MessageBox.Show("Thời lượng pin phải là số nguyên không âm.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            if (!double.TryParse(RentTextBox.Text, out double rentPrice) || rentPrice < 0)
+            {
+                MessageBox.Show("Giá thuê phải là số không âm.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            if (!int.TryParse(StatusTextBox.Text, out int status) || (status != 0 && status != 1))
+            {
+                MessageBox.Show("Status phải là 0 hoặc 1.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            // Khởi tạo CarDTO đầy đủ cho backend
+            car.Name = NameTextBox.Text.Trim();
+            car.Model = ModelTextBox.Text.Trim();
+            car.Seats = seats;
+            car.SizeType = SizeTextBox.Text.Trim();
+            car.TrunkCapacity = trunk;
+            car.BatteryType = BatteryTypeTextBox.Text.Trim();
+            car.BatteryDuration = batteryDuration;
+            car.RentPricePerDay = rentPrice;
+            car.RentPricePerHour = 0; // default nếu không nhập
+            car.RentPricePerDayWithDriver = 0;
+            car.RentPricePerHourWithDriver = 0;
+            car.ImageUrl = "";
+            car.ImageUrl2 = "";
+            car.ImageUrl3 = "";
+            car.Status = status;
+            car.IsActive = true;
+            car.IsDeleted = false;
+
+            return true;
         }
 
         private void ClearInputs()

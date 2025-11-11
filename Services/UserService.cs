@@ -1,7 +1,7 @@
 ﻿using AssignmentPRN212.DTO;
 using AssignmentPRN212.Models;
+using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace AssignmentPRN212.Services
@@ -9,14 +9,13 @@ namespace AssignmentPRN212.Services
     public class UserService
     {
         private readonly ApiService _api;
-        private readonly ApiService _apiService;
-        
+
         public UserService(ApiService api)
         {
             _api = api;
-            _apiService = api;
         }
 
+        // Login
         public async Task<LoginResponse> LoginAsync(string email, string password)
         {
             var request = new LoginRequest { Email = email, Password = password };
@@ -27,50 +26,70 @@ namespace AssignmentPRN212.Services
 
             return response;
         }
-        
+
+        // Lấy danh sách tất cả user
         public async Task<List<UserDTO>> GetAllUsersAsync()
         {
-            var response = await _apiService.GetAsync<ApiResponse<DataWrapper<UserDTO>>>("User/GetAll");
-            if (response?.Data?.Values != null)
-                return response.Data.Values;
-            return new List<UserDTO>();
+            var response = await _api.GetAsync<ApiResponse<DataWrapper<UserDTO>>>("User/GetAll");
+            return response?.Data?.Values ?? new List<UserDTO>();
         }
 
-        public async Task<UserDTO?> AddUserAsync(UserDTO user)
+        // Lấy user theo Id
+        public async Task<UserDTO?> GetUserByIdAsync(int id)
         {
-            var response = await _apiService.PostAsync<UserDTO, ApiResponse<UserDTO>>("User", user);
-            return response.Data;
+            var response = await _api.GetAsync<ApiResponse<UserDTO>>($"User/GetById?id={id}");
+            return response?.Data;
         }
 
-        public async Task<UserDTO?> UpdateUserAsync(UserDTO user)
+        // Thêm staff
+        public async Task<UserDTO?> AddStaffAsync(CreateStaffUserDTO staff)
         {
-            var response = await _apiService.PutAsync<UserDTO, ApiResponse<UserDTO>>($"User/{user.Id}", user);
-            return response.Data;
+            var response = await _api.PostAsync<CreateStaffUserDTO, ApiResponse<UserDTO>>("User/CreateStaff", staff);
+            return response?.Data;
         }
 
-        public async Task<bool> DeleteUserAsync(int id)
+        // Cập nhật user
+        public async Task<UserDTO?> UpdateUserAsync(UpdateUserDTO user)
         {
-            var response = await _apiService.DeleteAsync<ApiResponse<object>>($"User/{id}");
+            var response = await _api.PutAsync<UpdateUserDTO, ApiResponse<UserDTO>>("User", user);
+            return response?.Data;
+        }
+
+        // Cập nhật tên customer
+        public async Task<UserDTO?> UpdateCustomerNameAsync(UpdateCustomerNameDTO dto)
+        {
+            var response = await _api.PutAsync<UpdateCustomerNameDTO, ApiResponse<UserDTO>>("User/UpdateCustomerName", dto);
+            return response?.Data;
+        }
+
+        // Cập nhật password customer
+        public async Task<UserDTO?> UpdateCustomerPasswordAsync(UpdateCustomerPasswordDTO dto)
+        {
+            var response = await _api.PutAsync<UpdateCustomerPasswordDTO, ApiResponse<UserDTO>>("User/UpdateCustomerPassword", dto);
+            return response?.Data;
+        }
+
+        // Xóa user (id là GUID)
+        public async Task<bool> DeleteUserAsync(Guid id)
+        {
+            var response = await _api.DeleteAsync<ApiResponse<object>>($"User/{id}");
             return response != null;
         }
 
+        // Register
         public async Task<RegisterResponse?> RegisterAsync(string email, string password, string fullName)
         {
-            var request = new RegisterRequest 
-            { 
-                Email = email, 
-                Password = password, 
-                FullName = fullName 
-            };
-            var response = await _apiService.PostAsync<RegisterRequest, RegisterResponse>("Auth/register", request);
+            var request = new RegisterRequest { Email = email, Password = password, FullName = fullName };
+            var response = await _api.PostAsync<RegisterRequest, RegisterResponse>("Auth/register", request);
             return response;
         }
 
+        // Confirm email
         public async Task<bool> ConfirmEmailAsync(string token)
         {
             try
             {
-                var response = await _apiService.GetStringAsync($"Auth/confirm-email?token={System.Net.WebUtility.UrlEncode(token)}");
+                var response = await _api.GetStringAsync($"Auth/confirm-email?token={Uri.EscapeDataString(token)}");
                 return !string.IsNullOrEmpty(response) && response.Contains("thành công");
             }
             catch
@@ -79,12 +98,13 @@ namespace AssignmentPRN212.Services
             }
         }
 
+        // Forgot password
         public async Task<bool> ForgotPasswordAsync(string email)
         {
             try
             {
                 var request = new ForgotPasswordRequest { Email = email };
-                var response = await _apiService.PostAsync<ForgotPasswordRequest, ApiResponse<object>>("Auth/forgot-password", request);
+                var response = await _api.PostAsync<ForgotPasswordRequest, ApiResponse<object>>("Auth/forgot-password", request);
                 return response != null;
             }
             catch
@@ -93,17 +113,13 @@ namespace AssignmentPRN212.Services
             }
         }
 
+        // Reset password
         public async Task<bool> ResetPasswordAsync(string email, string otp, string newPassword)
         {
             try
             {
-                var request = new ResetPasswordRequest 
-                { 
-                    Email = email, 
-                    OTP = otp, 
-                    NewPassword = newPassword 
-                };
-                var response = await _apiService.PostAsync<ResetPasswordRequest, ApiResponse<object>>("Auth/reset-password", request);
+                var request = new ResetPasswordRequest { Email = email, OTP = otp, NewPassword = newPassword };
+                var response = await _api.PostAsync<ResetPasswordRequest, ApiResponse<object>>("Auth/reset-password", request);
                 return response != null;
             }
             catch
