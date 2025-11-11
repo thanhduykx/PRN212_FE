@@ -1,7 +1,7 @@
 using AssignmentPRN212.DTO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using AssignmentPRN212.Models;
 namespace AssignmentPRN212.Services
 {
     public class RentalLocationService

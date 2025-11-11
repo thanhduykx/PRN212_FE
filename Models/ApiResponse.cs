@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace AssignmentPRN212.Services
+namespace AssignmentPRN212.Models
 {
     public class ApiResponse<T>
     {

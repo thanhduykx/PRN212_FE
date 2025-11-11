@@ -1,5 +1,6 @@
 ﻿using AssignmentPRN212.Services;
 using System.Windows;
+using System.Windows.Input;
 
 namespace AssignmentPRN212.Views
 {
@@ -15,6 +16,9 @@ namespace AssignmentPRN212.Views
             string apiBaseUrl = "https://localhost:7200/api/";
             _apiService = new ApiService(apiBaseUrl); // ✅ truyền BaseUrl
             _userService = new UserService(_apiService);
+            // Bắt sự kiện nhấn Enter trên email và password
+            EmailTextBox.KeyDown += LoginInput_KeyDown;
+            PasswordBox.KeyDown += LoginInput_KeyDown;
         }
 
         private async void Login_Click(object sender, RoutedEventArgs e)
@@ -57,7 +61,16 @@ namespace AssignmentPRN212.Views
                 MessageBox.Show($"Lỗi: {ex.Message}");
             }
         }
-
+        // Nhấn Enter để gửi chat
+        // Nhấn Enter sẽ login
+        private async void LoginInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                e.Handled = true;
+                Login_Click(this, new RoutedEventArgs());
+            }
+        }
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             var registerWindow = new RegisterWindow();
