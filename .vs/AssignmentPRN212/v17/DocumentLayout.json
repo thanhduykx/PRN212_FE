@@ -1,0 +1,596 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\PRN212_FE\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\views\\staffdashboardwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:views\\staffdashboardwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\models\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:models\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\views\\userlistwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:views\\userlistwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\views\\paymentwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:views\\paymentwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\views\\paymentwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:views\\paymentwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\views\\vehiclereturnwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:views\\vehiclereturnwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\views\\vehiclereturnwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:views\\vehiclereturnwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\views\\staffdashboardwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:views\\staffdashboardwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\views\\vehiclehandoverwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:views\\vehiclehandoverwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\views\\vehiclehandoverwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:views\\vehiclehandoverwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\views\\carlistwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:views\\carlistwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\services\\staffservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:services\\staffservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\dto\\carreturnhistorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:dto\\carreturnhistorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\dto\\cardeliveryhistorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:dto\\cardeliveryhistorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\dto\\paymentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:dto\\paymentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\dto\\citizeniddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:dto\\citizeniddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\dto\\carrentallocationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:dto\\carrentallocationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\dto\\driverlicensedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:dto\\driverlicensedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\services\\carservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:services\\carservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\models\\airesponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:models\\airesponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\dto\\rentalorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:dto\\rentalorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\dto\\rentallocationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:dto\\rentallocationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\dto\\cardto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:dto\\cardto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\models\\confirmemailrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:models\\confirmemailrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\models\\registerresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:models\\registerresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\models\\resetpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:models\\resetpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\models\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:models\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\models\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:models\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|d:\\prn212_fe\\models\\forgotpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:models\\forgotpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 686,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserListWindow.xaml.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Views\\UserListWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\UserListWindow.xaml.cs",
+              "ToolTip": "D:\\PRN212_FE\\Views\\UserListWindow.xaml.cs",
+              "RelativeToolTip": "Views\\UserListWindow.xaml.cs",
+              "ViewState": "AgIAALMAAAAAAAAAAAAAAL0AAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T14:54:30.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PaymentWindow.xaml.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Views\\PaymentWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\PaymentWindow.xaml.cs",
+              "ToolTip": "D:\\PRN212_FE\\Views\\PaymentWindow.xaml.cs",
+              "RelativeToolTip": "Views\\PaymentWindow.xaml.cs",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAkwOEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T14:47:48.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PaymentWindow.xaml",
+              "DocumentMoniker": "D:\\PRN212_FE\\Views\\PaymentWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\PaymentWindow.xaml",
+              "ToolTip": "D:\\PRN212_FE\\Views\\PaymentWindow.xaml",
+              "RelativeToolTip": "Views\\PaymentWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-15T14:47:33.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "VehicleReturnWindow.xaml.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Views\\VehicleReturnWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\VehicleReturnWindow.xaml.cs",
+              "ToolTip": "D:\\PRN212_FE\\Views\\VehicleReturnWindow.xaml.cs",
+              "RelativeToolTip": "Views\\VehicleReturnWindow.xaml.cs",
+              "ViewState": "AgIAANQAAAAAAAAAAAAAAOcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T14:44:05.422Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "VehicleReturnWindow.xaml",
+              "DocumentMoniker": "D:\\PRN212_FE\\Views\\VehicleReturnWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\VehicleReturnWindow.xaml",
+              "ToolTip": "D:\\PRN212_FE\\Views\\VehicleReturnWindow.xaml",
+              "RelativeToolTip": "Views\\VehicleReturnWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-15T14:43:51.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "VehicleHandoverWindow.xaml.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Views\\VehicleHandoverWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\VehicleHandoverWindow.xaml.cs",
+              "ToolTip": "D:\\PRN212_FE\\Views\\VehicleHandoverWindow.xaml.cs",
+              "RelativeToolTip": "Views\\VehicleHandoverWindow.xaml.cs",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAcwM8AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T14:40:45.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "VehicleHandoverWindow.xaml",
+              "DocumentMoniker": "D:\\PRN212_FE\\Views\\VehicleHandoverWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\VehicleHandoverWindow.xaml",
+              "ToolTip": "D:\\PRN212_FE\\Views\\VehicleHandoverWindow.xaml",
+              "RelativeToolTip": "Views\\VehicleHandoverWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-15T14:40:18.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CarListWindow.xaml",
+              "DocumentMoniker": "D:\\PRN212_FE\\Views\\CarListWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\CarListWindow.xaml",
+              "ToolTip": "D:\\PRN212_FE\\Views\\CarListWindow.xaml",
+              "RelativeToolTip": "Views\\CarListWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-15T14:39:10.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "StaffDashboardWindow.xaml.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Views\\StaffDashboardWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\StaffDashboardWindow.xaml.cs",
+              "ToolTip": "D:\\PRN212_FE\\Views\\StaffDashboardWindow.xaml.cs",
+              "RelativeToolTip": "Views\\StaffDashboardWindow.xaml.cs",
+              "ViewState": "AgIAANYAAAAAAAAAAAAkwAQBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T14:37:58.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StaffDashboardWindow.xaml",
+              "DocumentMoniker": "D:\\PRN212_FE\\Views\\StaffDashboardWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\StaffDashboardWindow.xaml",
+              "ToolTip": "D:\\PRN212_FE\\Views\\StaffDashboardWindow.xaml",
+              "RelativeToolTip": "Views\\StaffDashboardWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-15T14:36:25.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\PRN212_FE\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\PRN212_FE\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-15T14:35:47.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\PRN212_FE\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "D:\\PRN212_FE\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-15T14:34:55.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CarRentalLocationDTO.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\DTO\\CarRentalLocationDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\CarRentalLocationDTO.cs",
+              "ToolTip": "D:\\PRN212_FE\\DTO\\CarRentalLocationDTO.cs",
+              "RelativeToolTip": "DTO\\CarRentalLocationDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T14:29:25.367Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "StaffService.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Services\\StaffService.cs",
+              "RelativeDocumentMoniker": "Services\\StaffService.cs",
+              "ToolTip": "D:\\PRN212_FE\\Services\\StaffService.cs",
+              "RelativeToolTip": "Services\\StaffService.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAuwH8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T14:11:52.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CarService.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Services\\CarService.cs",
+              "RelativeDocumentMoniker": "Services\\CarService.cs",
+              "ToolTip": "D:\\PRN212_FE\\Services\\CarService.cs",
+              "RelativeToolTip": "Services\\CarService.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAA9wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T14:00:48.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ApiService.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Services\\ApiService.cs",
+              "RelativeDocumentMoniker": "Services\\ApiService.cs",
+              "ToolTip": "D:\\PRN212_FE\\Services\\ApiService.cs",
+              "RelativeToolTip": "Services\\ApiService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T14:00:47.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "DriverLicenseDTO.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\DTO\\DriverLicenseDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\DriverLicenseDTO.cs",
+              "ToolTip": "D:\\PRN212_FE\\DTO\\DriverLicenseDTO.cs",
+              "RelativeToolTip": "DTO\\DriverLicenseDTO.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAowAgAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:59:25.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CitizenIdDTO.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\DTO\\CitizenIdDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\CitizenIdDTO.cs",
+              "ToolTip": "D:\\PRN212_FE\\DTO\\CitizenIdDTO.cs",
+              "RelativeToolTip": "DTO\\CitizenIdDTO.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAIwBMAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:54:24.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "RentalOrderDTO.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\DTO\\RentalOrderDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\RentalOrderDTO.cs",
+              "ToolTip": "D:\\PRN212_FE\\DTO\\RentalOrderDTO.cs",
+              "RelativeToolTip": "DTO\\RentalOrderDTO.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wBsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:53:02.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PaymentDTO.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\DTO\\PaymentDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\PaymentDTO.cs",
+              "ToolTip": "D:\\PRN212_FE\\DTO\\PaymentDTO.cs",
+              "RelativeToolTip": "DTO\\PaymentDTO.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwBQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:51:10.862Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CarReturnHistoryDTO.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\DTO\\CarReturnHistoryDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\CarReturnHistoryDTO.cs",
+              "ToolTip": "D:\\PRN212_FE\\DTO\\CarReturnHistoryDTO.cs",
+              "RelativeToolTip": "DTO\\CarReturnHistoryDTO.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAIwCgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:50:27.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CarDeliveryHistoryDTO.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\DTO\\CarDeliveryHistoryDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\CarDeliveryHistoryDTO.cs",
+              "ToolTip": "D:\\PRN212_FE\\DTO\\CarDeliveryHistoryDTO.cs",
+              "RelativeToolTip": "DTO\\CarDeliveryHistoryDTO.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAkwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:46:41.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\DTO\\UserDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\UserDTO.cs",
+              "ToolTip": "D:\\PRN212_FE\\DTO\\UserDTO.cs",
+              "RelativeToolTip": "DTO\\UserDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:40:54.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "RentalLocationDTO.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\DTO\\RentalLocationDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\RentalLocationDTO.cs",
+              "ToolTip": "D:\\PRN212_FE\\DTO\\RentalLocationDTO.cs",
+              "RelativeToolTip": "DTO\\RentalLocationDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:35:24.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CarDTO.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\DTO\\CarDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\CarDTO.cs",
+              "ToolTip": "D:\\PRN212_FE\\DTO\\CarDTO.cs",
+              "RelativeToolTip": "DTO\\CarDTO.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:35:23.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ResetPasswordRequest.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Models\\ResetPasswordRequest.cs",
+              "RelativeDocumentMoniker": "Models\\ResetPasswordRequest.cs",
+              "ToolTip": "D:\\PRN212_FE\\Models\\ResetPasswordRequest.cs",
+              "RelativeToolTip": "Models\\ResetPasswordRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:35:15.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "RegisterResponse.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Models\\RegisterResponse.cs",
+              "RelativeDocumentMoniker": "Models\\RegisterResponse.cs",
+              "ToolTip": "D:\\PRN212_FE\\Models\\RegisterResponse.cs",
+              "RelativeToolTip": "Models\\RegisterResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:35:14.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "RegisterRequest.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Models\\RegisterRequest.cs",
+              "RelativeDocumentMoniker": "Models\\RegisterRequest.cs",
+              "ToolTip": "D:\\PRN212_FE\\Models\\RegisterRequest.cs",
+              "RelativeToolTip": "Models\\RegisterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:35:13.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginResponse.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Models\\LoginResponse.cs",
+              "RelativeDocumentMoniker": "Models\\LoginResponse.cs",
+              "ToolTip": "D:\\PRN212_FE\\Models\\LoginResponse.cs",
+              "RelativeToolTip": "Models\\LoginResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:35:12.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Models\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "Models\\LoginRequest.cs",
+              "ToolTip": "D:\\PRN212_FE\\Models\\LoginRequest.cs",
+              "RelativeToolTip": "Models\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:35:12.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "AIResponse.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Models\\AIResponse.cs",
+              "RelativeDocumentMoniker": "Models\\AIResponse.cs",
+              "ToolTip": "D:\\PRN212_FE\\Models\\AIResponse.cs",
+              "RelativeToolTip": "Models\\AIResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:35:11.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ApiResponse.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Models\\ApiResponse.cs",
+              "RelativeDocumentMoniker": "Models\\ApiResponse.cs",
+              "ToolTip": "D:\\PRN212_FE\\Models\\ApiResponse.cs",
+              "RelativeToolTip": "Models\\ApiResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:35:10.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "ForgotPasswordRequest.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Models\\ForgotPasswordRequest.cs",
+              "RelativeDocumentMoniker": "Models\\ForgotPasswordRequest.cs",
+              "ToolTip": "D:\\PRN212_FE\\Models\\ForgotPasswordRequest.cs",
+              "RelativeToolTip": "Models\\ForgotPasswordRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:35:09.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ConfirmEmailRequest.cs",
+              "DocumentMoniker": "D:\\PRN212_FE\\Models\\ConfirmEmailRequest.cs",
+              "RelativeDocumentMoniker": "Models\\ConfirmEmailRequest.cs",
+              "ToolTip": "D:\\PRN212_FE\\Models\\ConfirmEmailRequest.cs",
+              "RelativeToolTip": "Models\\ConfirmEmailRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:35:06.915Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

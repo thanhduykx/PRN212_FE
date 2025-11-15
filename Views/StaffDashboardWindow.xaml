@@ -1,0 +1,162 @@
+﻿<Window x:Class="AssignmentPRN212.Views.StaffDashboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Staff Dashboard - EV Station" 
+        Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+
+    <Window.Resources>
+        <!-- Button Style -->
+        <Style x:Key="ActionButton" TargetType="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="5"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#45a049"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#2196F3" Padding="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Staff Dashboard" FontSize="24" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock x:Name="txtStaffInfo" Text="Welcome, Staff" FontSize="14" 
+                               Foreground="White" Opacity="0.9" Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <Button Grid.Column="1" Content="Logout" Click="BtnLogout_Click"
+                        Background="#FF5252" Foreground="White" Padding="20,10"
+                        BorderThickness="0" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    CornerRadius="5" Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Border>
+
+        <!-- Main Content -->
+        <TabControl Grid.Row="1" Margin="10" BorderThickness="0">
+
+            <!-- Orders Tab -->
+            <TabItem Header="📋 Rental Orders">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Filter Section -->
+                    <Border Grid.Row="0" Background="White" CornerRadius="5" Padding="15" Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Filter by Status:" VerticalAlignment="Center" 
+                                       Margin="0,0,10,0" FontWeight="SemiBold"/>
+                            <ComboBox x:Name="cmbStatus" Width="150" 
+                                      SelectionChanged="CmbStatus_SelectionChanged">
+                                <ComboBoxItem Content="All" IsSelected="True"/>
+                                <ComboBoxItem Content="Confirmed"/>
+                                <ComboBoxItem Content="InProgress"/>
+                                <ComboBoxItem Content="Completed"/>
+                            </ComboBox>
+                            <Button Content="🔄 Refresh" Click="BtnRefresh_Click" 
+                                    Style="{StaticResource ActionButton}" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- DataGrid -->
+                    <DataGrid Grid.Row="1" x:Name="dgOrders" 
+                              AutoGenerateColumns="False" 
+                              IsReadOnly="True"
+                              SelectionMode="Single"
+                              AlternatingRowBackground="#F9F9F9"
+                              BorderThickness="0"
+                              Margin="10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Order Code" Binding="{Binding OrderCode}" Width="120"/>
+                            <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate, StringFormat=dd/MM/yyyy}" Width="100"/>
+                            <DataGridTextColumn Header="End Date" Binding="{Binding EndDate, StringFormat=dd/MM/yyyy}" Width="100"/>
+                            <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100"/>
+                            <DataGridTextColumn Header="Total (VND)" Binding="{Binding Total, StringFormat=N0}" Width="120"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!-- Action Buttons -->
+                    <Border Grid.Row="2" Background="White" Padding="15" Margin="10" CornerRadius="5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Content="✅ Handover Vehicle" Click="BtnHandover_Click" 
+                                    Style="{StaticResource ActionButton}" 
+                                    Background="#4CAF50" Margin="5"/>
+                            <Button Content="🔄 Return Vehicle" Click="BtnReturn_Click" 
+                                    Style="{StaticResource ActionButton}" 
+                                    Background="#2196F3" Margin="5"/>
+                            <Button Content="💰 Process Payment" Click="BtnPayment_Click" 
+                                    Style="{StaticResource ActionButton}" 
+                                    Background="#9C27B0" Margin="5"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- Vehicles Tab -->
+            <TabItem Header="🚗 Vehicles at Station">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" Background="White" Padding="15" Margin="10" CornerRadius="5">
+                        <Button Content="🔄 Refresh Vehicles" Click="BtnRefreshVehicles_Click" 
+                                Style="{StaticResource ActionButton}"/>
+                    </Border>
+
+                    <DataGrid Grid.Row="1" x:Name="dgVehicles" 
+                              AutoGenerateColumns="False" 
+                              IsReadOnly="True"
+                              Margin="10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Car ID" Binding="{Binding CarId}" Width="80"/>
+                            <DataGridTextColumn Header="Location ID" Binding="{Binding LocationId}" Width="100"/>
+                            <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="80"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

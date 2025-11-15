@@ -1,0 +1,121 @@
+﻿<Window x:Class="AssignmentPRN212.Views.PaymentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Payment Processing | Thanh toán" 
+        Height="500" Width="500"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+
+    <Window.Resources>
+        <!-- Button Style -->
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Background" Value="#9C27B0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="5" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#7B1FA2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="#757575"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#616161"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#9C27B0" CornerRadius="5" Padding="15" Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="💰 Payment Processing" FontSize="20" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Xử lý thanh toán tiền mặt" FontSize="12" Foreground="White" Opacity="0.9" Margin="0,3,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Form Content -->
+        <StackPanel Grid.Row="1">
+
+            <!-- Order Total -->
+            <Border Background="White" CornerRadius="5" Padding="15" Margin="0,0,0,10">
+                <StackPanel>
+                    <TextBlock Text="📋 Order Total | Tổng đơn hàng:" FontSize="14" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBlock x:Name="txtTotal" FontSize="24" Foreground="#9C27B0" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Payment Details -->
+            <Border Background="White" CornerRadius="5" Padding="15" Margin="0,0,0,10">
+                <StackPanel>
+                    <TextBlock Text="💵 Payment Details | Chi tiết thanh toán" FontSize="14" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- Payment Amount -->
+                    <TextBlock Text="Payment Amount (VND) | Số tiền thanh toán:" Margin="0,5,0,3"/>
+                    <TextBox x:Name="txtAmount" Padding="8" FontSize="16" FontWeight="Bold"
+                             TextChanged="TxtAmount_TextChanged"/>
+                    <TextBlock x:Name="txtFormatted" Foreground="#9C27B0" FontWeight="Bold" 
+                               Margin="0,3,0,0" FontSize="14"/>
+
+                    <!-- Received Amount -->
+                    <TextBlock Text="Received from Customer (VND) | Khách đưa:" Margin="0,15,0,3"/>
+                    <TextBox x:Name="txtReceived" Padding="8" FontSize="16"
+                             TextChanged="TxtReceived_TextChanged"/>
+
+                    <!-- Change to Return -->
+                    <Border Background="#FFF3E0" CornerRadius="5" Padding="10" Margin="0,15,0,0">
+                        <StackPanel>
+                            <TextBlock Text="Change to Return | Tiền thừa trả khách:" FontSize="13" Margin="0,0,0,5"/>
+                            <TextBlock x:Name="txtChange" FontSize="20" FontWeight="Bold" 
+                                       Foreground="#FF6F00" Text="0 VND"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+
+        <!-- Action Buttons -->
+        <Grid Grid.Row="2" Margin="0,15,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="✅ Process Payment | Thanh toán" 
+                    Click="BtnPay_Click" 
+                    Style="{StaticResource PrimaryButton}" 
+                    Margin="0,0,5,0"/>
+
+            <Button Grid.Column="1" Content="❌ Cancel | Hủy" 
+                    Click="BtnCancel_Click" 
+                    Style="{StaticResource SecondaryButton}" 
+                    Margin="5,0,0,0"/>
+        </Grid>
+    </Grid>
+</Window>

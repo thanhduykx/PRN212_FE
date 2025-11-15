@@ -1,0 +1,148 @@
+﻿<Window x:Class="AssignmentPRN212.Views.VehicleHandoverWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Vehicle Handover | Giao xe cho khách hàng" 
+        Height="650" Width="600"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+
+    <Window.Resources>
+        <!-- Button Style -->
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="5" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#45a049"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="#757575"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#616161"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#2196F3" CornerRadius="5" Padding="15" Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="🚗 Vehicle Handover" FontSize="20" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Giao xe cho khách hàng" FontSize="12" Foreground="White" Opacity="0.9" Margin="0,3,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Form Content -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+
+                <!-- Order Information -->
+                <Border Background="White" CornerRadius="5" Padding="15" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="📋 Order Information" FontSize="14" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <TextBlock x:Name="txtOrderInfo" TextWrapping="Wrap" Foreground="#555"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Document Verification -->
+                <Border Background="White" CornerRadius="5" Padding="15" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="📄 Document Verification | Xác minh giấy tờ" FontSize="14" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                        <CheckBox x:Name="chkCitizenId" Content="✓ Citizen ID Verified | CCCD đã xác minh" 
+                                  Margin="0,5" FontSize="13"/>
+                        <CheckBox x:Name="chkLicense" Content="✓ Driver License Verified | Bằng lái đã xác minh" 
+                                  Margin="0,5" FontSize="13"/>
+                        <CheckBox x:Name="chkSignature" Content="✓ Customer Signature Obtained | Đã ký nhận" 
+                                  Margin="0,5" FontSize="13"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Vehicle Inspection -->
+                <Border Background="White" CornerRadius="5" Padding="15" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="🔍 Vehicle Inspection | Kiểm tra xe" FontSize="14" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                        <!-- Vehicle Condition -->
+                        <TextBlock Text="Vehicle Condition | Tình trạng xe:" Margin="0,5,0,3"/>
+                        <ComboBox x:Name="cmbCondition" SelectedIndex="0">
+                            <ComboBoxItem Content="Excellent | Xuất sắc"/>
+                            <ComboBoxItem Content="Good | Tốt"/>
+                            <ComboBoxItem Content="Fair | Khá"/>
+                        </ComboBox>
+
+                        <!-- Battery Level -->
+                        <TextBlock Text="Battery Level | Mức pin (%):" Margin="0,10,0,3"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Slider x:Name="sliderBattery" Grid.Column="0" Minimum="0" Maximum="100" 
+                                    Value="100" TickFrequency="10" IsSnapToTickEnabled="True"
+                                    VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="{Binding ElementName=sliderBattery, Path=Value, StringFormat={}{0:0}%}" 
+                                       Margin="10,0,0,0" FontWeight="Bold" FontSize="16" 
+                                       VerticalAlignment="Center" Width="50"/>
+                        </Grid>
+
+                        <!-- Mileage -->
+                        <TextBlock Text="Mileage (km) | Số km đã đi:" Margin="0,10,0,3"/>
+                        <TextBox x:Name="txtMileage" Padding="8" FontSize="13"/>
+
+                        <!-- Notes -->
+                        <TextBlock Text="Notes | Ghi chú:" Margin="0,10,0,3"/>
+                        <TextBox x:Name="txtNotes" Height="60" TextWrapping="Wrap" 
+                                 AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Padding="8"/>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Action Buttons -->
+        <Grid Grid.Row="2" Margin="0,15,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="✅ Complete Handover | Hoàn tất" 
+                    Click="BtnComplete_Click" 
+                    Style="{StaticResource PrimaryButton}" 
+                    Margin="0,0,5,0"/>
+
+            <Button Grid.Column="1" Content="❌ Cancel | Hủy" 
+                    Click="BtnCancel_Click" 
+                    Style="{StaticResource SecondaryButton}" 
+                    Margin="5,0,0,0"/>
+        </Grid>
+    </Grid>
+</Window>
