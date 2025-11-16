@@ -33,5 +33,11 @@ namespace AssignmentPRN212.Views
             var userWindow = new UserListWindow(_apiService);
             userWindow.ShowDialog();
         }
+
+        private void ViewFeedbacksButton_Click(object sender, RoutedEventArgs e)
+        {
+            var feedbackWindow = new FeedbackListWindow(_apiService);
+            feedbackWindow.ShowDialog();
+        }
     }
 }

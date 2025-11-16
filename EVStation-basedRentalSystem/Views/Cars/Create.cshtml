@@ -1,0 +1,98 @@
+﻿@model Repository.Entities.Car
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Car</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seats" class="control-label"></label>
+                <input asp-for="Seats" class="form-control" />
+                <span asp-validation-for="Seats" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SizeType" class="control-label"></label>
+                <input asp-for="SizeType" class="form-control" />
+                <span asp-validation-for="SizeType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrunkCapacity" class="control-label"></label>
+                <input asp-for="TrunkCapacity" class="form-control" />
+                <span asp-validation-for="TrunkCapacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatteryType" class="control-label"></label>
+                <input asp-for="BatteryType" class="form-control" />
+                <span asp-validation-for="BatteryType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatteryDuration" class="control-label"></label>
+                <input asp-for="BatteryDuration" class="form-control" />
+                <span asp-validation-for="BatteryDuration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RentPricePerDay" class="control-label"></label>
+                <input asp-for="RentPricePerDay" class="form-control" />
+                <span asp-validation-for="RentPricePerDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RentPricePerHour" class="control-label"></label>
+                <input asp-for="RentPricePerHour" class="form-control" />
+                <span asp-validation-for="RentPricePerHour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl" class="control-label"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" class="form-control" />
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdatedAt" class="control-label"></label>
+                <input asp-for="UpdatedAt" class="form-control" />
+                <span asp-validation-for="UpdatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

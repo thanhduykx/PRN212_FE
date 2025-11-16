@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using AssignmentPRN212.DTOs;
 
 namespace AssignmentPRN212.Services
 {
@@ -67,6 +71,74 @@ namespace AssignmentPRN212.Services
             var response = await _client.GetAsync(endpoint);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<IEnumerable<FeedbackDTO>> GetAllFeedbacksAsync()
+        {
+            var response = await _client.GetAsync("api/Feedback");
+            response.EnsureSuccessStatusCode();
+            var json = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<IEnumerable<FeedbackDTO>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task<FeedbackDTO> AddFeedbackAsync(FeedbackDTO feedback)
+        {
+            var json = JsonSerializer.Serialize(feedback);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await _client.PostAsync("api/Feedback", content);
+            response.EnsureSuccessStatusCode();
+            var responseJson = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<FeedbackDTO>(responseJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task<FeedbackDTO> UpdateFeedbackAsync(FeedbackDTO feedback)
+        {
+            var json = JsonSerializer.Serialize(feedback);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await _client.PutAsync($"api/Feedback/{feedback.Id}", content);
+            response.EnsureSuccessStatusCode();
+            var responseJson = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<FeedbackDTO>(responseJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task<bool> DeleteFeedbackAsync(int id)
+        {
+            var response = await _client.DeleteAsync($"api/Feedback/{id}");
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<IEnumerable<RentalLocationDTO>> GetAllRentalLocationsAsync()
+        {
+            var response = await _client.GetAsync("api/RentalLocation");
+            response.EnsureSuccessStatusCode();
+            var json = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<IEnumerable<RentalLocationDTO>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task<RentalLocationDTO> AddRentalLocationAsync(RentalLocationDTO location)
+        {
+            var json = JsonSerializer.Serialize(location);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await _client.PostAsync("api/RentalLocation", content);
+            response.EnsureSuccessStatusCode();
+            var responseJson = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<RentalLocationDTO>(responseJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task<RentalLocationDTO> UpdateRentalLocationAsync(RentalLocationDTO location)
+        {
+            var json = JsonSerializer.Serialize(location);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await _client.PutAsync($"api/RentalLocation/{location.Id}", content);
+            response.EnsureSuccessStatusCode();
+            var responseJson = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<RentalLocationDTO>(responseJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task<bool> DeleteRentalLocationAsync(int id)
+        {
+            var response = await _client.DeleteAsync($"api/RentalLocation/{id}");
+            return response.IsSuccessStatusCode;
         }
     }
 }

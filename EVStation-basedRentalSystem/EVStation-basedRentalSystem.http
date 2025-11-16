@@ -1,0 +1,6 @@
+@EVStation_basedRentalSystem_HostAddress = http://localhost:5027
+
+GET {{EVStation_basedRentalSystem_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
