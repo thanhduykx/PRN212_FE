@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\services\\aiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:services\\aiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\views\\aianalysiswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:views\\aianalysiswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\views\\aianalysiswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:views\\aianalysiswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|c:\\project_prn\\assignmentprn212\\prn212_fe\\views\\staffdashboardwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A937A402-3383-6E88-C529-7F1B65B8D84E}|AssignmentPRN212.csproj|solutionrelative:views\\staffdashboardwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -157,7 +169,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -165,19 +177,56 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AIAnalysisWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\AIAnalysisWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\AIAnalysisWindow.xaml.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\AIAnalysisWindow.xaml.cs",
+              "RelativeToolTip": "Views\\AIAnalysisWindow.xaml.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwCMAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T09:51:35.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "AIAnalysisWindow.xaml",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\AIAnalysisWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\AIAnalysisWindow.xaml",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\AIAnalysisWindow.xaml",
+              "RelativeToolTip": "Views\\AIAnalysisWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-17T09:51:30.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AIService.cs",
+              "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\AIService.cs",
+              "RelativeDocumentMoniker": "Services\\AIService.cs",
+              "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\AIService.cs",
+              "RelativeToolTip": "Services\\AIService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAcwCIAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T09:50:33.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "HomeWindow.xaml",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\HomeWindow.xaml",
               "RelativeDocumentMoniker": "Views\\HomeWindow.xaml",
               "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\HomeWindow.xaml",
               "RelativeToolTip": "Views\\HomeWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-16T21:54:26.58Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-16T21:54:26.58Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "RentalOrderListWindow.xaml.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\RentalOrderListWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\RentalOrderListWindow.xaml.cs",
@@ -185,97 +234,90 @@
               "RelativeToolTip": "Views\\RentalOrderListWindow.xaml.cs",
               "ViewState": "AgIAADsAAAAAAAAAAAAnwEkAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T09:18:35.048Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T09:18:35.048Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "StaffDashboardWindow.xaml",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\StaffDashboardWindow.xaml",
               "RelativeDocumentMoniker": "Views\\StaffDashboardWindow.xaml",
               "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\StaffDashboardWindow.xaml",
               "RelativeToolTip": "Views\\StaffDashboardWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-17T08:04:00.567Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T08:04:00.567Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "StaffDashboardWindow.xaml.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\StaffDashboardWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\StaffDashboardWindow.xaml.cs",
               "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\StaffDashboardWindow.xaml.cs",
               "RelativeToolTip": "Views\\StaffDashboardWindow.xaml.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAWwIIAAABVAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAWwIIAAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-17T08:24:10.333Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "CarDeliveryHistoryListWindow.xaml",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CarDeliveryHistoryListWindow.xaml",
               "RelativeDocumentMoniker": "Views\\CarDeliveryHistoryListWindow.xaml",
               "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CarDeliveryHistoryListWindow.xaml",
               "RelativeToolTip": "Views\\CarDeliveryHistoryListWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-17T08:30:01.585Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T08:30:01.585Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "RentalOrderListWindow.xaml",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\RentalOrderListWindow.xaml",
               "RelativeDocumentMoniker": "Views\\RentalOrderListWindow.xaml",
               "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\RentalOrderListWindow.xaml",
               "RelativeToolTip": "Views\\RentalOrderListWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-17T08:47:52.995Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T08:47:52.995Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "CustomerActiveRentalWindow.xaml",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CustomerActiveRentalWindow.xaml",
               "RelativeDocumentMoniker": "Views\\CustomerActiveRentalWindow.xaml",
               "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CustomerActiveRentalWindow.xaml",
               "RelativeToolTip": "Views\\CustomerActiveRentalWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-17T09:17:43.322Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T09:17:43.322Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "CustomerDashboardWindow.xaml",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CustomerDashboardWindow.xaml",
               "RelativeDocumentMoniker": "Views\\CustomerDashboardWindow.xaml",
               "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CustomerDashboardWindow.xaml",
               "RelativeToolTip": "Views\\CustomerDashboardWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-17T07:56:34.116Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T07:56:34.116Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "OrderDetailWindow.xaml",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\OrderDetailWindow.xaml",
               "RelativeDocumentMoniker": "Views\\OrderDetailWindow.xaml",
               "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\OrderDetailWindow.xaml",
               "RelativeToolTip": "Views\\OrderDetailWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-17T09:17:19.116Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T09:17:19.116Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "CarReturnHistoryListWindow.xaml.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CarReturnHistoryListWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\CarReturnHistoryListWindow.xaml.cs",
@@ -283,24 +325,22 @@
               "RelativeToolTip": "Views\\CarReturnHistoryListWindow.xaml.cs",
               "ViewState": "AgIAANsAAAAAAAAAAAAewOMAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T22:46:55.522Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-16T22:46:55.522Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "StaffOrderManagementWindow.xaml",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\StaffOrderManagementWindow.xaml",
               "RelativeDocumentMoniker": "Views\\StaffOrderManagementWindow.xaml",
               "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\StaffOrderManagementWindow.xaml",
               "RelativeToolTip": "Views\\StaffOrderManagementWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-17T08:26:43.356Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T08:26:43.356Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "ImageUrlConverter.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\ImageUrlConverter.cs",
               "RelativeDocumentMoniker": "Views\\ImageUrlConverter.cs",
@@ -308,12 +348,11 @@
               "RelativeToolTip": "Views\\ImageUrlConverter.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T08:57:42.136Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T08:57:42.136Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "RentalOrderDTO.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\DTO\\RentalOrderDTO.cs",
               "RelativeDocumentMoniker": "DTO\\RentalOrderDTO.cs",
@@ -321,24 +360,22 @@
               "RelativeToolTip": "DTO\\RentalOrderDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T21:39:47.757Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-16T21:39:47.757Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "ResetPasswordWindow.xaml",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\ResetPasswordWindow.xaml",
               "RelativeDocumentMoniker": "Views\\ResetPasswordWindow.xaml",
               "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\ResetPasswordWindow.xaml",
               "RelativeToolTip": "Views\\ResetPasswordWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-17T08:41:11.749Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T08:41:11.749Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "StaffOrderManagementWindow.xaml.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\StaffOrderManagementWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\StaffOrderManagementWindow.xaml.cs",
@@ -346,24 +383,22 @@
               "RelativeToolTip": "Views\\StaffOrderManagementWindow.xaml.cs",
               "ViewState": "AgIAAH8AAAAAAAAAAAAMwI4AAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T08:27:10.505Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T08:27:10.505Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
               "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-17T08:05:36.636Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T08:05:36.636Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "ApiService.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\ApiService.cs",
               "RelativeDocumentMoniker": "Services\\ApiService.cs",
@@ -371,12 +406,11 @@
               "RelativeToolTip": "Services\\ApiService.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAAAwDoAAABvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T02:01:39.04Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T02:01:39.04Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
@@ -384,24 +418,22 @@
               "RelativeToolTip": "MainWindow.xaml.cs",
               "ViewState": "AgIAAFcAAAAAAAAAAAAhwGUAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T08:05:21.234Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T08:05:21.234Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "PaymentWindow.xaml",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\PaymentWindow.xaml",
               "RelativeDocumentMoniker": "Views\\PaymentWindow.xaml",
               "ToolTip": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\PaymentWindow.xaml",
               "RelativeToolTip": "Views\\PaymentWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-17T08:06:41.107Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T08:06:41.107Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "PaymentService.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\PaymentService.cs",
               "RelativeDocumentMoniker": "Services\\PaymentService.cs",
@@ -413,7 +445,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "HomeWindow.xaml.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\HomeWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\HomeWindow.xaml.cs",
@@ -421,12 +453,11 @@
               "RelativeToolTip": "Views\\HomeWindow.xaml.cs",
               "ViewState": "AgIAANQAAAAAAAAAAAAQwNoAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T22:01:02.472Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-16T22:01:02.472Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "CreateStaffUserDTO.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\DTO\\CreateStaffUserDTO.cs",
               "RelativeDocumentMoniker": "DTO\\CreateStaffUserDTO.cs",
@@ -434,12 +465,11 @@
               "RelativeToolTip": "DTO\\CreateStaffUserDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T07:54:25.565Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T07:54:25.565Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "FeedbackDTO.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\DTO\\FeedbackDTO.cs",
               "RelativeDocumentMoniker": "DTO\\FeedbackDTO.cs",
@@ -447,12 +477,11 @@
               "RelativeToolTip": "DTO\\FeedbackDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T07:54:31.195Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T07:54:31.195Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "DriverLicenseService.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\DriverLicenseService.cs",
               "RelativeDocumentMoniker": "Services\\DriverLicenseService.cs",
@@ -464,7 +493,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "CarDeliveryHistoryService.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\CarDeliveryHistoryService.cs",
               "RelativeDocumentMoniker": "Services\\CarDeliveryHistoryService.cs",
@@ -472,12 +501,11 @@
               "RelativeToolTip": "Services\\CarDeliveryHistoryService.cs",
               "ViewState": "AgIAAD4AAAAAAAAAAAAIwDkAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T00:31:51.66Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T00:31:51.66Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "RentalOrderService.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\RentalOrderService.cs",
               "RelativeDocumentMoniker": "Services\\RentalOrderService.cs",
@@ -489,7 +517,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "FeedbackService.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\FeedbackService.cs",
               "RelativeDocumentMoniker": "Services\\FeedbackService.cs",
@@ -501,7 +529,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "CarRentalLocationService.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\CarRentalLocationService.cs",
               "RelativeDocumentMoniker": "Services\\CarRentalLocationService.cs",
@@ -513,7 +541,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": "CarListWindow.xaml.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CarListWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\CarListWindow.xaml.cs",
@@ -525,7 +553,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 37,
               "Title": "CarReturnHistoryService.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\CarReturnHistoryService.cs",
               "RelativeDocumentMoniker": "Services\\CarReturnHistoryService.cs",
@@ -537,7 +565,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "CarListWindow.xaml",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CarListWindow.xaml",
               "RelativeDocumentMoniker": "Views\\CarListWindow.xaml",
@@ -548,7 +576,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "CarService.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Services\\CarService.cs",
               "RelativeDocumentMoniker": "Services\\CarService.cs",
@@ -560,7 +588,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 38,
               "Title": "FeedbackListWindow.xaml.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\FeedbackListWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\FeedbackListWindow.xaml.cs",
@@ -572,7 +600,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 39,
               "Title": "CarDetailWindow.xaml",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\CarDetailWindow.xaml",
               "RelativeDocumentMoniker": "Views\\CarDetailWindow.xaml",
@@ -583,7 +611,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
               "Title": "LoginWindow.xaml.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\Views\\LoginWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\LoginWindow.xaml.cs",
@@ -595,7 +623,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 36,
               "Title": "Microsoft.WinFX.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.306\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.306\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
@@ -607,7 +635,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "CarDTO.cs",
               "DocumentMoniker": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\DTO\\CarDTO.cs",
               "RelativeDocumentMoniker": "DTO\\CarDTO.cs",
