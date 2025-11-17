@@ -124,3 +124,5 @@ C:\Project_PRN\AssignmentPRN212\PRN212_FE\obj\Debug\net9.0-windows\Views\ActiveR
 C:\Project_PRN\AssignmentPRN212\PRN212_FE\obj\Debug\net9.0-windows\Views\ActiveRentalListWindow.g.cs
 C:\Project_PRN\AssignmentPRN212\PRN212_FE\obj\Debug\net9.0-windows\Views\CustomerActiveRentalWindow.baml
 C:\Project_PRN\AssignmentPRN212\PRN212_FE\obj\Debug\net9.0-windows\Views\CustomerActiveRentalWindow.g.cs
+C:\Project_PRN\AssignmentPRN212\PRN212_FE\obj\Debug\net9.0-windows\Views\AIAnalysisWindow.baml
+C:\Project_PRN\AssignmentPRN212\PRN212_FE\obj\Debug\net9.0-windows\Views\AIAnalysisWindow.g.cs

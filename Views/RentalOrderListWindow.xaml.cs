@@ -13,16 +13,21 @@ namespace AssignmentPRN212.Views
     public partial class RentalOrderListWindow : Window
     {
         private readonly RentalOrderService _rentalOrderService;
+        private readonly ApiService _apiService;
+        private readonly CarService _carService;
 
         // ObservableCollection bind DataGrid
         public ObservableCollection<RentalOrderDTO> RentalOrders { get; set; } = new ObservableCollection<RentalOrderDTO>();
         private List<RentalOrderDTO> _allOrders = new List<RentalOrderDTO>(); // Lưu danh sách gốc để filter
         private RentalOrderDTO _selectedOrder;
+        private Dictionary<int, CarDTO> _carsCache = new Dictionary<int, CarDTO>();
 
         public RentalOrderListWindow(ApiService apiService)
         {
             InitializeComponent();
+            _apiService = apiService;
             _rentalOrderService = new RentalOrderService(apiService);
+            _carService = new CarService(apiService);
 
             RentalOrderDataGrid.ItemsSource = RentalOrders;
 
@@ -39,12 +44,71 @@ namespace AssignmentPRN212.Views
             try
             {
                 var orders = await _rentalOrderService.GetAllAsync();
+                
+                // Load thông tin xe cho tất cả CarId
+                var carIds = orders.Select(o => o.CarId).Distinct().ToList();
+                await LoadCars(carIds);
+                
+                // Tính lại SubTotal và Deposit nếu cần (giống như bên Giao xe)
+                foreach (var order in orders)
+                {
+                    if ((order.SubTotal == null || order.SubTotal == 0) || (order.Deposit == null || order.Deposit == 0))
+                    {
+                        if (_carsCache.ContainsKey(order.CarId))
+                        {
+                            var car = _carsCache[order.CarId];
+                            int days = (order.ExpectedReturnTime - order.PickupTime).Days + 1;
+                            double pricePerDay = car.RentPricePerDay;
+                            double pricePerDayWithDriver = car.RentPricePerDayWithDriver;
+                            double driverFeePerDay = pricePerDayWithDriver - pricePerDay;
+                            double totalDriverFee = order.WithDriver ? driverFeePerDay * days : 0;
+                            
+                            if (order.SubTotal == null || order.SubTotal == 0)
+                            {
+                                // SubTotal = (giá không tài xế * số ngày) + phí tài xế
+                                order.SubTotal = (days * pricePerDay) + totalDriverFee;
+                            }
+                            
+                            if (order.Deposit == null || order.Deposit == 0)
+                            {
+                                // Deposit = DepositAmount từ Car (giống như bên Giao xe)
+                                order.Deposit = car.DepositAmount;
+                                System.Diagnostics.Debug.WriteLine($"RentalOrderList - Order #{order.Id}: Calculated Deposit from car = {order.Deposit}");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Sử dụng giá trị từ backend (đã được lưu khi đặt hàng)
+                        System.Diagnostics.Debug.WriteLine($"RentalOrderList - Order #{order.Id}: Using backend Deposit = {order.Deposit}");
+                    }
+                }
+                
                 _allOrders = orders.ToList();
                 ApplyFilter();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Load lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private async Task LoadCars(List<int> carIds)
+        {
+            try
+            {
+                var allCars = await _carService.GetAllCarsAsync();
+                foreach (var car in allCars)
+                {
+                    if (!_carsCache.ContainsKey(car.Id))
+                    {
+                        _carsCache[car.Id] = car;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading cars: {ex.Message}");
             }
         }
 
@@ -152,6 +216,32 @@ namespace AssignmentPRN212.Views
                     return;
                 }
 
+                // Lấy thông tin xe để tính giá
+                var car = await _carService.GetCarByIdAsync(carId);
+                if (car == null)
+                {
+                    MessageBox.Show("Không tìm thấy xe với ID này.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Tính toán giá tiền
+                int days = (ReturnDatePicker.SelectedDate.Value - PickupDatePicker.SelectedDate.Value).Days + 1;
+                double pricePerDay = car.RentPricePerDay;
+                double pricePerDayWithDriver = car.RentPricePerDayWithDriver;
+                double driverFeePerDay = pricePerDayWithDriver - pricePerDay;
+                
+                // Tính phí tài xế tổng (nếu có tài xế)
+                double totalDriverFee = (WithDriverCheckBox.IsChecked == true) ? driverFeePerDay * days : 0;
+                
+                // SubTotal = (giá không tài xế * số ngày) + phí tài xế
+                double subTotal = (days * pricePerDay) + totalDriverFee;
+                
+                // Deposit = DepositAmount từ Car
+                double deposit = car.DepositAmount;
+                
+                // Total = SubTotal + Deposit
+                double total = subTotal + deposit;
+
                 var newOrder = new CreateRentalOrderDTO
                 {
                     PhoneNumber = PhoneNumberTextBox.Text.Trim(),
@@ -160,8 +250,14 @@ namespace AssignmentPRN212.Views
                     WithDriver = WithDriverCheckBox.IsChecked ?? false,
                     UserId = userId,
                     CarId = carId,
-                    RentalLocationId = locationId
+                    RentalLocationId = locationId,
+                    SubTotal = subTotal,
+                    Deposit = deposit,
+                    Total = total
                 };
+
+                // Debug log để kiểm tra
+                System.Diagnostics.Debug.WriteLine($"Creating order with SubTotal={subTotal}, Deposit={deposit}, Total={total}");
 
                 var createdOrder = await _rentalOrderService.CreateAsync(newOrder);
 

@@ -18,9 +18,17 @@ namespace AssignmentPRN212.DTO
         
         [System.Text.Json.Serialization.JsonPropertyName("total")]
         public double? Total { get; set; }
+        
+        [System.Text.Json.Serialization.JsonPropertyName("discount")]
         public int? Discount { get; set; }
+        
+        [System.Text.Json.Serialization.JsonPropertyName("extraFee")]
         public double? ExtraFee { get; set; }
+        
+        [System.Text.Json.Serialization.JsonPropertyName("damageFee")]
         public double? DamageFee { get; set; }
+        
+        [System.Text.Json.Serialization.JsonPropertyName("damageNotes")]
         public string? DamageNotes { get; set; }
         public bool WithDriver { get; set; }
         public string Status { get; set; } = ""; // String từ API

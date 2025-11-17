@@ -122,28 +122,7 @@
                     </Button.Style>
                 </Button>
 
-                <Button Content="👤 Hồ sơ cá nhân" Width="300" Height="60" Margin="0,0,0,10"
-                        Background="#607D8B" Foreground="White" FontSize="16" FontWeight="SemiBold"
-                        BorderThickness="0" Cursor="Hand" Click="ViewProfileButton_Click">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#7B1FA2"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
+              
             </StackPanel>
 
             <!-- Right Column - Quick Info -->

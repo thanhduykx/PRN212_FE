@@ -75,14 +75,38 @@ namespace AssignmentPRN212.Services
         {
             // Serialize với custom options
             var jsonContent = JsonSerializer.Serialize(data, _jsonOptions);
+            
+            // Debug log để kiểm tra JSON được gửi lên
+            System.Diagnostics.Debug.WriteLine($"POST {endpoint}");
+            System.Diagnostics.Debug.WriteLine($"Request JSON: {jsonContent}");
+            
+            // Debug: Kiểm tra token có được gửi không
+            if (_client.DefaultRequestHeaders.Authorization != null)
+            {
+                System.Diagnostics.Debug.WriteLine($"Authorization header: Bearer {_token?.Substring(0, Math.Min(20, _token?.Length ?? 0))}...");
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("WARNING: No Authorization header found!");
+            }
+            
             var content = new StringContent(jsonContent, System.Text.Encoding.UTF8, "application/json");
             
             var response = await _client.PostAsync(endpoint, content);
             if (!response.IsSuccessStatusCode)
             {
                 var errorContent = await response.Content.ReadAsStringAsync();
-                throw new HttpRequestException($"HTTP {(int)response.StatusCode} {response.StatusCode}: {errorContent}");
+                System.Diagnostics.Debug.WriteLine($"POST {endpoint} failed: HTTP {(int)response.StatusCode} - {errorContent}");
+                var httpEx = new HttpRequestException($"HTTP {(int)response.StatusCode} {response.StatusCode}: {errorContent}");
+                httpEx.Data["StatusCode"] = (int)response.StatusCode;
+                httpEx.Data["StatusText"] = response.StatusCode.ToString();
+                httpEx.Data["ErrorContent"] = errorContent;
+                throw httpEx;
             }
+            
+            var responseContent = await response.Content.ReadAsStringAsync();
+            System.Diagnostics.Debug.WriteLine($"POST {endpoint} response: {responseContent.Substring(0, Math.Min(500, responseContent.Length))}");
+            
             // Sử dụng custom JsonSerializerOptions để deserialize với camelCase
             return await response.Content.ReadFromJsonAsync<TResponse>(_jsonOptions);
         }
@@ -92,14 +116,28 @@ namespace AssignmentPRN212.Services
         {
             // Serialize với custom options
             var jsonContent = JsonSerializer.Serialize(data, _jsonOptions);
+            
+            // Debug log để kiểm tra JSON được gửi lên
+            System.Diagnostics.Debug.WriteLine($"PUT {endpoint}");
+            System.Diagnostics.Debug.WriteLine($"Request JSON: {jsonContent}");
+            
             var content = new StringContent(jsonContent, System.Text.Encoding.UTF8, "application/json");
             
             var response = await _client.PutAsync(endpoint, content);
             if (!response.IsSuccessStatusCode)
             {
                 var errorContent = await response.Content.ReadAsStringAsync();
-                throw new HttpRequestException($"HTTP {(int)response.StatusCode} {response.StatusCode}: {errorContent}");
+                System.Diagnostics.Debug.WriteLine($"PUT {endpoint} failed: HTTP {(int)response.StatusCode} - {errorContent}");
+                var httpEx = new HttpRequestException($"HTTP {(int)response.StatusCode} {response.StatusCode}: {errorContent}");
+                httpEx.Data["StatusCode"] = (int)response.StatusCode;
+                httpEx.Data["StatusText"] = response.StatusCode.ToString();
+                httpEx.Data["ErrorContent"] = errorContent;
+                throw httpEx;
             }
+            
+            var responseContent = await response.Content.ReadAsStringAsync();
+            System.Diagnostics.Debug.WriteLine($"PUT {endpoint} response: {responseContent.Substring(0, Math.Min(500, responseContent.Length))}");
+            
             // Sử dụng custom JsonSerializerOptions để deserialize với camelCase
             return await response.Content.ReadFromJsonAsync<TResponse>(_jsonOptions);
         }

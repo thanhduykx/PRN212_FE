@@ -30,7 +30,7 @@ namespace AssignmentPRN212.Views
             _userRole = userRole;
 
             LoadCarDetails();
-            LoadFeedbacks();
+            _ = LoadFeedbacks(); // Fire and forget async call
         }
 
         private void LoadCarDetails()
@@ -96,12 +96,18 @@ namespace AssignmentPRN212.Views
             }
         }
 
-        private async void LoadFeedbacks()
+        private async Task LoadFeedbacks()
         {
             try
             {
+                System.Diagnostics.Debug.WriteLine($"Loading feedbacks for car: {_car.Name} (Id: {_car.Id})");
                 var feedbacks = await _feedbackService.GetByCarNameAsync(_car.Name);
+                System.Diagnostics.Debug.WriteLine($"Loaded {feedbacks.Count} feedbacks");
+                
+                // Clear và set lại ItemsSource để đảm bảo UI được update
+                FeedbacksItemsControl.ItemsSource = null;
                 FeedbacksItemsControl.ItemsSource = feedbacks;
+                
                 FeedbackCountTextBlock.Text = $"({feedbacks.Count} đánh giá)";
 
                 // Hiển thị nút Sửa/Xóa chỉ cho Staff và Admin
@@ -113,6 +119,7 @@ namespace AssignmentPRN212.Views
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"Error loading feedbacks: {ex.Message}\n{ex.StackTrace}");
                 MessageBox.Show($"Lỗi tải đánh giá: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -166,7 +173,7 @@ namespace AssignmentPRN212.Views
             }
         }
 
-        private void AddFeedbackButton_Click(object sender, RoutedEventArgs e)
+        private async void AddFeedbackButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(_userRole))
             {
@@ -174,8 +181,8 @@ namespace AssignmentPRN212.Views
                 return;
             }
 
-            // Mở window tạo feedback
-            var feedbackWindow = new CreateFeedbackWindow(_apiService, _car.Id, _userId ?? 0);
+            // Mở window tạo feedback (truyền userRole để Staff/Admin không cần đơn hàng)
+            var feedbackWindow = new CreateFeedbackWindow(_apiService, _car.Id, _userId ?? 0, _userRole);
             feedbackWindow.ShowDialog();
             LoadFeedbacks();
         }

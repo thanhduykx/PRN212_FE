@@ -98,7 +98,7 @@
                                     MouseEnter="CarCard_MouseEnter" MouseLeave="CarCard_MouseLeave"
                                     Cursor="Hand" MouseLeftButtonDown="CarCard_MouseLeftButtonDown">
                                 <StackPanel>
-                                    <Image Source="{Binding ImageUrl, Converter={StaticResource ImageUrlConverter}}" Height="150" Stretch="UniformToFill" 
+                                    <Image Source="{Binding ImageUrl, Converter={StaticResource ImageUrlConverter}}" Height="220" Stretch="Uniform" 
                                            Margin="0,0,0,10" HorizontalAlignment="Stretch"/>
                                     <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="Bold" Margin="0,0,0,5"/>
                                     <TextBlock Text="{Binding Model}" FontSize="14" Foreground="#666" Margin="0,0,0,5"/>

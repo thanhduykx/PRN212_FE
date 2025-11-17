@@ -211,9 +211,19 @@ namespace AssignmentPRN212.Services
                         System.Diagnostics.Debug.WriteLine("UpdateStatus API response is null or Data is null");
                     }
                 }
+                catch (System.Net.Http.HttpRequestException httpEx1)
+                {
+                    System.Diagnostics.Debug.WriteLine($"UpdateStatus HttpRequestException: {httpEx1.Message}");
+                    System.Diagnostics.Debug.WriteLine($"Status Code: {httpEx1.Data}");
+                    // Re-throw để caller có thể xử lý
+                    throw;
+                }
                 catch (Exception ex1)
                 {
                     System.Diagnostics.Debug.WriteLine($"UpdateStatus ApiResponse format failed: {ex1.GetType().Name} - {ex1.Message}\n{ex1.StackTrace}");
+                    // Nếu là HttpRequestException, re-throw để caller xử lý
+                    if (ex1 is System.Net.Http.HttpRequestException)
+                        throw;
                 }
 
                 // Thử format trực tiếp RentalOrderDTO
@@ -241,9 +251,18 @@ namespace AssignmentPRN212.Services
                         System.Diagnostics.Debug.WriteLine("Direct format response is null");
                     }
                 }
+                catch (System.Net.Http.HttpRequestException httpEx2)
+                {
+                    System.Diagnostics.Debug.WriteLine($"UpdateStatus direct format HttpRequestException: {httpEx2.Message}");
+                    // Re-throw để caller có thể xử lý
+                    throw;
+                }
                 catch (Exception ex2)
                 {
                     System.Diagnostics.Debug.WriteLine($"UpdateStatus direct format failed: {ex2.GetType().Name} - {ex2.Message}\n{ex2.StackTrace}");
+                    // Nếu là HttpRequestException, re-throw để caller xử lý
+                    if (ex2 is System.Net.Http.HttpRequestException)
+                        throw;
                 }
 
                 // Nếu API call thành công (không throw exception) nhưng parse fail

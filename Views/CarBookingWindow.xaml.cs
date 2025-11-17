@@ -193,7 +193,16 @@ namespace AssignmentPRN212.Views
                     Total = total
                 };
 
+                // Debug log để kiểm tra
+                System.Diagnostics.Debug.WriteLine($"CarBookingWindow: Creating order with SubTotal={subTotal}, Deposit={deposit}, Total={total}");
+
                 var createdOrder = await _rentalOrderService.CreateAsync(order);
+                
+                // Debug log response
+                if (createdOrder != null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"CarBookingWindow: Created order ID={createdOrder.Id}, SubTotal={createdOrder.SubTotal}, Deposit={createdOrder.Deposit}, Total={createdOrder.Total}");
+                }
 
                 if (createdOrder != null)
                 {

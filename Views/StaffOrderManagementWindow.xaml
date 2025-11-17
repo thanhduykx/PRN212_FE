@@ -51,7 +51,8 @@
                 <DataGridTextColumn Header="Ngày đặt" Binding="{Binding OrderDate, StringFormat=dd/MM/yyyy}" Width="100"/>
                 <DataGridTextColumn Header="Nhận xe" Binding="{Binding PickupTime, StringFormat=dd/MM/yyyy HH:mm}" Width="130"/>
                 <DataGridTextColumn Header="Trả xe" Binding="{Binding ExpectedReturnTime, StringFormat=dd/MM/yyyy HH:mm}" Width="130"/>
-                <DataGridTextColumn Header="Tổng tiền" Binding="{Binding Total, StringFormat=N0}" Width="120"/>
+                <DataGridTextColumn Header="Tổng tiền" Binding="{Binding TotalText}" Width="120"/>
+                <DataGridTextColumn Header="Đặt cọc" Binding="{Binding Deposit, StringFormat={}{0:N0} VNĐ, TargetNullValue=0 VNĐ}" Width="120"/>
                 <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="100"/>
                 <DataGridTextColumn Header="User ID" Binding="{Binding UserId}" Width="80"/>
                 <DataGridTextColumn Header="Car ID" Binding="{Binding CarId}" Width="80"/>

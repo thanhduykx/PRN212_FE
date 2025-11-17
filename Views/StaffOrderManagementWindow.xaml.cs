@@ -12,15 +12,18 @@ namespace AssignmentPRN212.Views
     {
         private readonly ApiService _apiService;
         private readonly RentalOrderService _rentalOrderService;
+        private readonly CarService _carService;
         private RentalOrderDTO? _selectedOrder;
         public ObservableCollection<RentalOrderDTO> Orders { get; set; } = new ObservableCollection<RentalOrderDTO>();
         private System.Collections.Generic.List<RentalOrderDTO> _allOrders = new System.Collections.Generic.List<RentalOrderDTO>();
+        private System.Collections.Generic.Dictionary<int, CarDTO> _carsCache = new System.Collections.Generic.Dictionary<int, CarDTO>();
 
         public StaffOrderManagementWindow(ApiService apiService)
         {
             InitializeComponent();
             _apiService = apiService;
             _rentalOrderService = new RentalOrderService(_apiService);
+            _carService = new CarService(_apiService);
             OrdersDataGrid.ItemsSource = Orders;
             
             // Đợi window load xong mới gọi LoadOrders
@@ -36,12 +39,72 @@ namespace AssignmentPRN212.Views
         {
             try
             {
-                _allOrders = await _rentalOrderService.GetAllAsync();
+                var orders = await _rentalOrderService.GetAllAsync();
+                
+                // Load thông tin xe cho tất cả CarId
+                var carIds = orders.Select(o => o.CarId).Distinct().ToList();
+                await LoadCars(carIds);
+                
+                // Tính lại SubTotal và Deposit nếu cần (giống như bên Giao xe)
+                foreach (var order in orders)
+                {
+                    if ((order.SubTotal == null || order.SubTotal == 0) || (order.Deposit == null || order.Deposit == 0))
+                    {
+                        if (_carsCache.ContainsKey(order.CarId))
+                        {
+                            var car = _carsCache[order.CarId];
+                            int days = (order.ExpectedReturnTime - order.PickupTime).Days + 1;
+                            double pricePerDay = car.RentPricePerDay;
+                            double pricePerDayWithDriver = car.RentPricePerDayWithDriver;
+                            double driverFeePerDay = pricePerDayWithDriver - pricePerDay;
+                            double totalDriverFee = order.WithDriver ? driverFeePerDay * days : 0;
+                            
+                            if (order.SubTotal == null || order.SubTotal == 0)
+                            {
+                                // SubTotal = (giá không tài xế * số ngày) + phí tài xế
+                                order.SubTotal = (days * pricePerDay) + totalDriverFee;
+                            }
+                            
+                            if (order.Deposit == null || order.Deposit == 0)
+                            {
+                                // Deposit = DepositAmount từ Car (giống như bên Giao xe)
+                                order.Deposit = car.DepositAmount;
+                                System.Diagnostics.Debug.WriteLine($"StaffOrderManagement - Order #{order.Id}: Calculated Deposit from car = {order.Deposit}");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Sử dụng giá trị từ backend (đã được lưu khi đặt hàng)
+                        System.Diagnostics.Debug.WriteLine($"StaffOrderManagement - Order #{order.Id}: Using backend Deposit = {order.Deposit}");
+                    }
+                }
+                
+                _allOrders = orders.ToList();
                 ApplyFilter();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi tải đơn hàng: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private async Task LoadCars(System.Collections.Generic.List<int> carIds)
+        {
+            try
+            {
+                var allCars = await _carService.GetAllCarsAsync();
+                foreach (var car in allCars)
+                {
+                    if (!_carsCache.ContainsKey(car.Id))
+                    {
+                        _carsCache[car.Id] = car;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading cars: {ex.Message}");
             }
         }
 

@@ -45,4 +45,21 @@ namespace AssignmentPRN212.Models
         [JsonPropertyName("data")]
         public T? Data { get; set; }
     }
+
+    // Backend response format với isSuccess: { isSuccess: bool, message: string, data: T }
+    public class SuccessResponse<T>
+    {
+        [JsonPropertyName("isSuccess")]
+        public bool IsSuccess { get; set; }
+
+        [JsonPropertyName("message")]
+        public string? Message { get; set; }
+
+        [JsonPropertyName("data")]
+        public T? Data { get; set; }
+
+        // Capture các properties không biết trước (như $id) và ignore chúng
+        [JsonExtensionData]
+        public Dictionary<string, object>? ExtensionData { get; set; }
+    }
 }

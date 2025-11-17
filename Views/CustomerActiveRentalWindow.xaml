@@ -35,11 +35,7 @@
                 <DataGridTextColumn Header="Thời gian nhận" Binding="{Binding PickupTime, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Width="150"/>
                 <DataGridTextColumn Header="Thời gian trả dự kiến" Binding="{Binding ExpectedReturnTime, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Width="150"/>
                 <DataGridTextColumn Header="Có tài xế" Binding="{Binding WithDriverText}" Width="80"/>
-                <DataGridTextColumn Header="Tổng tiền" Width="120">
-                    <DataGridTextColumn.Binding>
-                        <Binding Path="Total" StringFormat="{}{0:N0} VNĐ"/>
-                    </DataGridTextColumn.Binding>
-                </DataGridTextColumn>
+                <DataGridTextColumn Header="Tổng tiền" Binding="{Binding TotalText}" Width="120"/>
                 <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>

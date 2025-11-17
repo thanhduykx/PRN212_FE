@@ -71,17 +71,49 @@ namespace AssignmentPRN212.Views
                         order.CarName = $"Car #{order.CarId}";
                     }
                     
-                    // Tính phí tài xế nếu có tài xế
-                    if (order.WithDriver && _carsCache.ContainsKey(order.CarId))
+                    // Tính phí tài xế để hiển thị (không ghi đè SubTotal và Deposit từ backend)
+                    if (_carsCache.ContainsKey(order.CarId))
                     {
                         var car = _carsCache[order.CarId];
                         int days = (order.ExpectedReturnTime - order.PickupTime).Days + 1;
-                        double driverFee = (car.RentPricePerDayWithDriver - car.RentPricePerDay) * days;
-                        order.DriverFeeText = $"{driverFee:N0} VNĐ";
+                        double pricePerDay = car.RentPricePerDay;
+                        double pricePerDayWithDriver = car.RentPricePerDayWithDriver;
+                        double driverFeePerDay = pricePerDayWithDriver - pricePerDay;
+                        
+                        // Tính phí tài xế tổng (nếu có tài xế) - chỉ để hiển thị
+                        double totalDriverFee = order.WithDriver ? driverFeePerDay * days : 0;
+                        order.DriverFeeText = $"{totalDriverFee:N0} VNĐ";
+                        
+                        // Kiểm tra nếu SubTotal hoặc Deposit từ backend là null/0 thì tính lại từ thông tin xe
+                        // (Trường hợp backend không trả về giá trị)
+                        if ((order.SubTotal == null || order.SubTotal == 0) || (order.Deposit == null || order.Deposit == 0))
+                        {
+                            // Tính lại SubTotal và Deposit từ thông tin xe
+                            // SubTotal = (giá không tài xế * số ngày) + phí tài xế
+                            order.SubTotal = (days * pricePerDay) + totalDriverFee;
+                            
+                            // Deposit = DepositAmount từ Car
+                            order.Deposit = car.DepositAmount;
+                            
+                            System.Diagnostics.Debug.WriteLine($"Order #{order.Id}: Calculated from car - SubTotal = {order.SubTotal}, Deposit = {order.Deposit}, TotalText = {order.TotalText}");
+                        }
+                        else
+                        {
+                            // Sử dụng giá trị từ backend (đã được lưu khi đặt hàng)
+                            System.Diagnostics.Debug.WriteLine($"Order #{order.Id}: Using backend values - SubTotal = {order.SubTotal}, Deposit = {order.Deposit}, TotalText = {order.TotalText}");
+                        }
                     }
                     else
                     {
-                        order.DriverFeeText = "0 VNĐ";
+                        // Nếu không có thông tin xe, chỉ tính phí tài xế nếu có
+                        if (order.WithDriver)
+                        {
+                            order.DriverFeeText = "N/A";
+                        }
+                        else
+                        {
+                            order.DriverFeeText = "0 VNĐ";
+                        }
                     }
                 }
                 
@@ -163,13 +195,13 @@ namespace AssignmentPRN212.Views
             if (CarReturnHistoryDataGrid.SelectedItem is RentalOrderDTO selectedOrder)
             {
                 _selectedOrder = selectedOrder;
-                PayButton.IsEnabled = true;
+                if (PayButton != null) PayButton.IsEnabled = true;
                 
                 // Load giá trị hiện tại vào các TextBox
-                ExtraFeeTextBox.Text = (selectedOrder.ExtraFee ?? 0).ToString();
-                DiscountTextBox.Text = (selectedOrder.Discount ?? 0).ToString();
-                DamageFeeTextBox.Text = (selectedOrder.DamageFee ?? 0).ToString();
-                DamageNotesTextBox.Text = selectedOrder.DamageNotes ?? "";
+                if (ExtraFeeTextBox != null) ExtraFeeTextBox.Text = (selectedOrder.ExtraFee ?? 0).ToString();
+                if (DiscountTextBox != null) DiscountTextBox.Text = (selectedOrder.Discount ?? 0).ToString();
+                if (DamageFeeTextBox != null) DamageFeeTextBox.Text = (selectedOrder.DamageFee ?? 0).ToString();
+                if (DamageNotesTextBox != null) DamageNotesTextBox.Text = selectedOrder.DamageNotes ?? "";
                 
                 // Tính toán lại tổng tiền
                 CalculateTotal();
@@ -177,14 +209,14 @@ namespace AssignmentPRN212.Views
             else
             {
                 _selectedOrder = null;
-                PayButton.IsEnabled = false;
+                if (PayButton != null) PayButton.IsEnabled = false;
                 
                 // Clear các TextBox
-                ExtraFeeTextBox.Text = "0";
-                DiscountTextBox.Text = "0";
-                DamageFeeTextBox.Text = "0";
-                DamageNotesTextBox.Text = "";
-                CalculatedTotalTextBlock.Text = "0 VNĐ";
+                if (ExtraFeeTextBox != null) ExtraFeeTextBox.Text = "0";
+                if (DiscountTextBox != null) DiscountTextBox.Text = "0";
+                if (DamageFeeTextBox != null) DamageFeeTextBox.Text = "0";
+                if (DamageNotesTextBox != null) DamageNotesTextBox.Text = "";
+                if (CalculatedTotalTextBlock != null) CalculatedTotalTextBlock.Text = "0 VNĐ";
             }
         }
         
@@ -195,6 +227,12 @@ namespace AssignmentPRN212.Views
         
         private void CalculateTotal()
         {
+            // Kiểm tra null để tránh lỗi khi window chưa được khởi tạo hoàn toàn
+            if (CalculatedTotalTextBlock == null)
+            {
+                return;
+            }
+            
             if (_selectedOrder == null)
             {
                 CalculatedTotalTextBlock.Text = "0 VNĐ";
@@ -203,13 +241,22 @@ namespace AssignmentPRN212.Views
             
             // Parse các giá trị từ TextBox
             double extraFee = 0;
-            double.TryParse(ExtraFeeTextBox.Text, out extraFee);
+            if (ExtraFeeTextBox != null)
+            {
+                double.TryParse(ExtraFeeTextBox.Text, out extraFee);
+            }
             
             int discount = 0;
-            int.TryParse(DiscountTextBox.Text, out discount);
+            if (DiscountTextBox != null)
+            {
+                int.TryParse(DiscountTextBox.Text, out discount);
+            }
             
             double damageFee = 0;
-            double.TryParse(DamageFeeTextBox.Text, out damageFee);
+            if (DamageFeeTextBox != null)
+            {
+                double.TryParse(DamageFeeTextBox.Text, out damageFee);
+            }
             
             // Lấy giá trị gốc từ order
             double subTotal = _selectedOrder.SubTotal ?? 0;
@@ -239,15 +286,28 @@ namespace AssignmentPRN212.Views
 
             // Parse các giá trị từ TextBox
             double extraFee = 0;
-            double.TryParse(ExtraFeeTextBox.Text, out extraFee);
+            if (ExtraFeeTextBox != null)
+            {
+                double.TryParse(ExtraFeeTextBox.Text, out extraFee);
+            }
             
             int discount = 0;
-            int.TryParse(DiscountTextBox.Text, out discount);
+            if (DiscountTextBox != null)
+            {
+                int.TryParse(DiscountTextBox.Text, out discount);
+            }
             
             double damageFee = 0;
-            double.TryParse(DamageFeeTextBox.Text, out damageFee);
+            if (DamageFeeTextBox != null)
+            {
+                double.TryParse(DamageFeeTextBox.Text, out damageFee);
+            }
             
-            string damageNotes = DamageNotesTextBox.Text.Trim();
+            string damageNotes = "";
+            if (DamageNotesTextBox != null)
+            {
+                damageNotes = DamageNotesTextBox.Text.Trim();
+            }
 
             // Tính tổng tiền để hiển thị trong xác nhận
             double subTotal = _selectedOrder.SubTotal ?? 0;

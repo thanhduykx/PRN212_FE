@@ -12,6 +12,7 @@ namespace AssignmentPRN212.DTO
         public int UserId { get; set; }
         public int RentalOrderId { get; set; }
         public bool IsDeleted { get; set; }
+        public string? UserFullName { get; set; } // Tên đầy đủ của user (từ backend)
     }
 
     public class CreateFeedbackDTO

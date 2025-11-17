@@ -56,7 +56,7 @@ namespace AssignmentPRN212.Views
                 await LoadCarNames(carIds);
                 await LoadCars(carIds);
                 
-                // Gán tên xe và tính phí tài xế vào từng order
+                // Gán tên xe và tính phí tài xế vào từng order (giống như RentalOrderListWindow)
                 foreach (var order in confirmedOrders)
                 {
                     if (_carNamesCache.ContainsKey(order.CarId))
@@ -68,20 +68,74 @@ namespace AssignmentPRN212.Views
                         order.CarName = $"Car #{order.CarId}";
                     }
                     
-                    // Debug: Kiểm tra SubTotal từ backend
-                    System.Diagnostics.Debug.WriteLine($"Order #{order.Id}: SubTotal = {order.SubTotal}, Total = {order.Total}");
-                    
-                    // Tính phí tài xế nếu có tài xế
-                    if (order.WithDriver && _carsCache.ContainsKey(order.CarId))
+                    // Tính lại SubTotal và Deposit nếu cần (giống như RentalOrderListWindow)
+                    if ((order.SubTotal == null || order.SubTotal == 0) || (order.Deposit == null || order.Deposit == 0))
                     {
-                        var car = _carsCache[order.CarId];
-                        int days = (order.ExpectedReturnTime - order.PickupTime).Days + 1;
-                        double driverFee = (car.RentPricePerDayWithDriver - car.RentPricePerDay) * days;
-                        order.DriverFeeText = $"{driverFee:N0} VNĐ";
+                        if (_carsCache.ContainsKey(order.CarId))
+                        {
+                            var car = _carsCache[order.CarId];
+                            int days = (order.ExpectedReturnTime - order.PickupTime).Days + 1;
+                            double pricePerDay = car.RentPricePerDay;
+                            double pricePerDayWithDriver = car.RentPricePerDayWithDriver;
+                            double driverFeePerDay = pricePerDayWithDriver - pricePerDay;
+                            double totalDriverFee = order.WithDriver ? driverFeePerDay * days : 0;
+                            
+                            // Tính phí tài xế để hiển thị
+                            order.DriverFeeText = $"{totalDriverFee:N0} VNĐ";
+                            
+                            if (order.SubTotal == null || order.SubTotal == 0)
+                            {
+                                // SubTotal = (giá không tài xế * số ngày) + phí tài xế
+                                order.SubTotal = (days * pricePerDay) + totalDriverFee;
+                            }
+                            
+                            if (order.Deposit == null || order.Deposit == 0)
+                            {
+                                // Deposit = DepositAmount từ Car (giống như RentalOrderListWindow)
+                                order.Deposit = car.DepositAmount;
+                                System.Diagnostics.Debug.WriteLine($"CarDeliveryHistory - Order #{order.Id}: Calculated Deposit from car = {order.Deposit}");
+                            }
+                        }
+                        else
+                        {
+                            // Nếu không có thông tin xe, chỉ tính phí tài xế nếu có
+                            if (order.WithDriver)
+                            {
+                                order.DriverFeeText = "N/A";
+                            }
+                            else
+                            {
+                                order.DriverFeeText = "0 VNĐ";
+                            }
+                        }
                     }
                     else
                     {
-                        order.DriverFeeText = "0 VNĐ";
+                        // Sử dụng giá trị từ backend (đã được lưu khi đặt hàng)
+                        // Vẫn tính phí tài xế để hiển thị
+                        if (_carsCache.ContainsKey(order.CarId))
+                        {
+                            var car = _carsCache[order.CarId];
+                            int days = (order.ExpectedReturnTime - order.PickupTime).Days + 1;
+                            double pricePerDay = car.RentPricePerDay;
+                            double pricePerDayWithDriver = car.RentPricePerDayWithDriver;
+                            double driverFeePerDay = pricePerDayWithDriver - pricePerDay;
+                            double totalDriverFee = order.WithDriver ? driverFeePerDay * days : 0;
+                            order.DriverFeeText = $"{totalDriverFee:N0} VNĐ";
+                        }
+                        else
+                        {
+                            if (order.WithDriver)
+                            {
+                                order.DriverFeeText = "N/A";
+                            }
+                            else
+                            {
+                                order.DriverFeeText = "0 VNĐ";
+                            }
+                        }
+                        
+                        System.Diagnostics.Debug.WriteLine($"CarDeliveryHistory - Order #{order.Id}: Using backend Deposit = {order.Deposit}");
                     }
                 }
                 
@@ -198,23 +252,87 @@ namespace AssignmentPRN212.Views
                     DeliverCarButton.IsEnabled = false;
                     DeliverCarButton.Content = "Đang xử lý...";
 
+                    System.Diagnostics.Debug.WriteLine($"Attempting to update order #{_selectedOrder.Id} to Renting status");
+
                     // Chuyển order status sang 4 (Renting)
                     var updatedOrder = await _rentalOrderService.UpdateOrderStatusAsync(_selectedOrder.Id, RentalOrderStatus.Renting);
 
                     if (updatedOrder != null)
                     {
+                        System.Diagnostics.Debug.WriteLine($"Order #{_selectedOrder.Id} updated successfully. New status: {updatedOrder.Status}");
                         MessageBox.Show("Giao xe thành công! Đơn hàng đã được chuyển sang trạng thái 'Đang cho thuê'.", 
                             "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
                         await LoadHistories();
                     }
                     else
                     {
-                        MessageBox.Show("Giao xe thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                        System.Diagnostics.Debug.WriteLine($"Order #{_selectedOrder.Id} update returned null");
+                        MessageBox.Show("Giao xe thất bại. Không thể cập nhật trạng thái đơn hàng. Vui lòng kiểm tra:\n" +
+                            "- Kết nối mạng\n" +
+                            "- Quyền truy cập\n" +
+                            "- Trạng thái đơn hàng hiện tại", 
+                            "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
+                }
+                catch (System.Net.Http.HttpRequestException httpEx)
+                {
+                    System.Diagnostics.Debug.WriteLine($"HttpRequestException: {httpEx.Message}\n{httpEx.StackTrace}");
+                    
+                    // Lấy status code từ exception data nếu có
+                    int? statusCode = null;
+                    if (httpEx.Data.Contains("StatusCode"))
+                        statusCode = httpEx.Data["StatusCode"] as int?;
+                    
+                    string errorMessage = "Lỗi kết nối với server:\n\n";
+                    
+                    if (statusCode.HasValue)
+                    {
+                        switch (statusCode.Value)
+                        {
+                            case 404:
+                                errorMessage += "API endpoint không tồn tại.\nVui lòng kiểm tra cấu hình backend.";
+                                break;
+                            case 401:
+                                errorMessage += "Chưa đăng nhập hoặc token hết hạn.\nVui lòng đăng nhập lại.";
+                                break;
+                            case 403:
+                                errorMessage += "Không có quyền thực hiện thao tác này.\nVui lòng kiểm tra quyền truy cập.";
+                                break;
+                            case 400:
+                                errorMessage += "Dữ liệu không hợp lệ.\n" + (httpEx.Data.Contains("ErrorContent") ? httpEx.Data["ErrorContent"]?.ToString() : "");
+                                break;
+                            case 500:
+                                errorMessage += "Lỗi server.\nVui lòng thử lại sau hoặc liên hệ quản trị viên.";
+                                break;
+                            default:
+                                errorMessage += $"HTTP {statusCode.Value}: {httpEx.Message}";
+                                break;
+                        }
+                    }
+                    else if (httpEx.Message.Contains("404"))
+                    {
+                        errorMessage += "API endpoint không tồn tại. Vui lòng kiểm tra cấu hình.";
+                    }
+                    else if (httpEx.Message.Contains("401") || httpEx.Message.Contains("403"))
+                    {
+                        errorMessage += "Không có quyền thực hiện thao tác này. Vui lòng đăng nhập lại.";
+                    }
+                    else if (httpEx.Message.Contains("500"))
+                    {
+                        errorMessage += "Lỗi server. Vui lòng thử lại sau.";
+                    }
+                    else
+                    {
+                        errorMessage += httpEx.Message;
+                    }
+                    
+                    MessageBox.Show(errorMessage, "Lỗi kết nối", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Diagnostics.Debug.WriteLine($"Exception in DeliverCarButton_Click: {ex.GetType().Name} - {ex.Message}\n{ex.StackTrace}");
+                    MessageBox.Show($"Lỗi: {ex.Message}\n\nChi tiết: {ex.GetType().Name}", 
+                        "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {

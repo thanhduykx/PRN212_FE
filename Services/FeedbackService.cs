@@ -100,42 +100,96 @@ namespace AssignmentPRN212.Services
         {
             try
             {
-                var response = await _apiService.GetAsync<ApiResponse<DataWrapper<FeedbackDTO>>>($"Feedback/byCar/{System.Net.WebUtility.UrlEncode(carName)}");
-                return response?.Data?.Values ?? new List<FeedbackDTO>();
-            }
-            catch
-            {
+                // Thử parse với SuccessResponse format (isSuccess, message, data với $values)
+                try
+                {
+                    var successResponse = await _apiService.GetAsync<SuccessResponse<DataWrapper<FeedbackDTO>>>($"Feedback/byCar/{System.Net.WebUtility.UrlEncode(carName)}");
+                    if (successResponse?.Data?.Values != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"GetByCarNameAsync: Loaded {successResponse.Data.Values.Count} feedbacks using SuccessResponse format");
+                        return successResponse.Data.Values;
+                    }
+                }
+                catch (Exception ex1)
+                {
+                    System.Diagnostics.Debug.WriteLine($"GetByCarNameAsync - SuccessResponse format failed: {ex1.Message}");
+                }
+
+                // Fallback: Thử ApiResponse format
+                try
+                {
+                    var response = await _apiService.GetAsync<ApiResponse<DataWrapper<FeedbackDTO>>>($"Feedback/byCar/{System.Net.WebUtility.UrlEncode(carName)}");
+                    if (response?.Data?.Values != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"GetByCarNameAsync: Loaded {response.Data.Values.Count} feedbacks using ApiResponse format");
+                        return response.Data.Values;
+                    }
+                }
+                catch (Exception ex2)
+                {
+                    System.Diagnostics.Debug.WriteLine($"GetByCarNameAsync - ApiResponse format failed: {ex2.Message}");
+                }
+
+                // Fallback: Thử direct List format
                 try
                 {
                     var directResponse = await _apiService.GetAsync<List<FeedbackDTO>>($"Feedback/byCar/{System.Net.WebUtility.UrlEncode(carName)}");
-                    return directResponse ?? new List<FeedbackDTO>();
+                    if (directResponse != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"GetByCarNameAsync: Loaded {directResponse.Count} feedbacks using direct List format");
+                        return directResponse;
+                    }
                 }
-                catch
+                catch (Exception ex3)
                 {
-                    return new List<FeedbackDTO>();
+                    System.Diagnostics.Debug.WriteLine($"GetByCarNameAsync - Direct List format failed: {ex3.Message}");
                 }
+
+                return new List<FeedbackDTO>();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"GetByCarNameAsync error: {ex.Message}");
+                return new List<FeedbackDTO>();
             }
         }
 
-        // POST /api/Feedback - Tạo feedback mới
+        // POST /api/Feedback/Create - Tạo feedback mới
         public async Task<FeedbackDTO?> CreateAsync(CreateFeedbackDTO request)
         {
             try
             {
-                var response = await _apiService.PostAsync<CreateFeedbackDTO, ApiResponse<FeedbackDTO>>("Feedback", request);
-                return response?.Data;
-            }
-            catch
-            {
+                // Backend trả về Ok(result.Data) nên có thể là ApiResponse<FeedbackDTO> hoặc FeedbackDTO trực tiếp
+                // Thử ApiResponse format trước
                 try
                 {
-                    var directResponse = await _apiService.PostAsync<CreateFeedbackDTO, FeedbackDTO>("Feedback", request);
-                    return directResponse;
+                    var response = await _apiService.PostAsync<CreateFeedbackDTO, ApiResponse<FeedbackDTO>>("Feedback/Create", request);
+                    if (response?.Data != null)
+                        return response.Data;
                 }
-                catch
+                catch (Exception ex1)
                 {
-                    return null;
+                    System.Diagnostics.Debug.WriteLine($"Feedback CreateAsync - ApiResponse format failed: {ex1.Message}");
+                    // Fallback: Thử direct FeedbackDTO
+                    try
+                    {
+                        var directResponse = await _apiService.PostAsync<CreateFeedbackDTO, FeedbackDTO>("Feedback/Create", request);
+                        if (directResponse != null)
+                            return directResponse;
+                    }
+                    catch (Exception ex2)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Feedback CreateAsync - Direct format failed: {ex2.Message}");
+                        throw; // Re-throw để caller có thể xử lý
+                    }
                 }
+                
+                return null;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Feedback CreateAsync error: {ex.Message}");
+                throw; // Re-throw để caller có thể hiển thị lỗi chi tiết
             }
         }
 

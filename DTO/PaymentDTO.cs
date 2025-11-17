@@ -52,5 +52,14 @@ namespace AssignmentPRN212.DTO
     {
         public int OrderId { get; set; }
     }
+
+    public class RevenueByLocationDTO
+    {
+        public int LocationId { get; set; }
+        public string LocationName { get; set; } = "";
+        public string LocationAddress { get; set; } = "";
+        public double TotalRevenue { get; set; }
+        public int TotalOrders { get; set; }
+    }
 }
 

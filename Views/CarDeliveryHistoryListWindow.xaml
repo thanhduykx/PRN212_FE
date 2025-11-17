@@ -43,6 +43,7 @@
                 <DataGridTextColumn Header="Thời gian trả dự kiến" Binding="{Binding ExpectedReturnTime, StringFormat=dd/MM/yyyy HH:mm}" Width="150"/>
                 <DataGridTextColumn Header="Có tài xế" Binding="{Binding WithDriverText}" Width="80"/>
                 <DataGridTextColumn Header="Phí tài xế" Binding="{Binding DriverFeeText}" Width="120"/>
+                <DataGridTextColumn Header="Đặt cọc" Binding="{Binding Deposit, StringFormat={}{0:N0} VNĐ, TargetNullValue=0 VNĐ}" Width="120"/>
                 <DataGridTextColumn Header="Tổng tiền" Binding="{Binding TotalText}" Width="120"/>
                 <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="100"/>
             </DataGrid.Columns>

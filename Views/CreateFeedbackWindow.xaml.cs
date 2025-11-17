@@ -12,14 +12,16 @@ namespace AssignmentPRN212.Views
         private readonly FeedbackService _feedbackService;
         private readonly int _carId;
         private readonly int _userId;
+        private readonly string? _userRole;
 
-        public CreateFeedbackWindow(ApiService apiService, int carId, int userId)
+        public CreateFeedbackWindow(ApiService apiService, int carId, int userId, string? userRole = null)
         {
             InitializeComponent();
             _apiService = apiService;
             _feedbackService = new FeedbackService(_apiService);
             _carId = carId;
             _userId = userId;
+            _userRole = userRole;
         }
 
         private async void SubmitButton_Click(object sender, RoutedEventArgs e)
@@ -38,26 +40,42 @@ namespace AssignmentPRN212.Views
                     return;
                 }
 
-                // Lấy đơn hàng gần nhất của user với carId này
                 var rentalOrderService = new RentalOrderService(_apiService);
-                var userOrders = await rentalOrderService.GetByUserIdAsync(_userId);
-                var orderForThisCar = userOrders
+                int rentalOrderId = 0;
+
+                // Tất cả users (Staff, Admin, Customer) đều không cần đơn hàng để đánh giá
+                // Tìm một đơn hàng bất kỳ của xe này để gán vào RentalOrderId (backend yêu cầu)
+                var allOrders = await rentalOrderService.GetAllAsync();
+                var orderForThisCar = allOrders
                     .Where(o => o.CarId == _carId)
                     .OrderByDescending(o => o.OrderDate)
                     .FirstOrDefault();
 
-                if (orderForThisCar == null)
+                if (orderForThisCar != null)
                 {
-                    MessageBox.Show("Bạn chưa có đơn hàng nào cho xe này. Vui lòng thuê xe trước khi đánh giá.", 
-                        "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-                    return;
+                    rentalOrderId = orderForThisCar.Id;
+                }
+                else
+                {
+                    // Nếu không có đơn hàng nào của xe này, tìm đơn hàng đầu tiên bất kỳ
+                    var anyOrder = allOrders.FirstOrDefault();
+                    if (anyOrder != null)
+                    {
+                        rentalOrderId = anyOrder.Id;
+                    }
+                    else
+                    {
+                        // Nếu không có đơn hàng nào trong hệ thống, set = 0
+                        // Backend sẽ xử lý hoặc có thể cần tạo một đơn hàng mặc định
+                        rentalOrderId = 0;
+                    }
                 }
 
                 var feedback = new CreateFeedbackDTO
                 {
                     Title = TitleTextBox.Text.Trim(),
                     Content = ContentTextBox.Text.Trim(),
-                    RentalOrderId = orderForThisCar.Id
+                    RentalOrderId = rentalOrderId
                 };
 
                 var createdFeedback = await _feedbackService.CreateAsync(feedback);
@@ -69,12 +87,25 @@ namespace AssignmentPRN212.Views
                 }
                 else
                 {
-                    MessageBox.Show("Gửi đánh giá thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Gửi đánh giá thất bại. Vui lòng thử lại.\n\nCó thể endpoint API không tồn tại hoặc có lỗi kết nối.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+            }
+            catch (System.Net.Http.HttpRequestException httpEx)
+            {
+                string errorMsg = $"Lỗi HTTP: {httpEx.Message}";
+                if (httpEx.Data.Contains("StatusCode"))
+                {
+                    errorMsg += $"\nMã lỗi: {httpEx.Data["StatusCode"]}";
+                }
+                if (httpEx.Data.Contains("ErrorContent"))
+                {
+                    errorMsg += $"\nChi tiết: {httpEx.Data["ErrorContent"]}";
+                }
+                MessageBox.Show(errorMsg, "Lỗi kết nối", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Lỗi: {ex.Message}\n\nChi tiết: {ex.GetType().Name}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

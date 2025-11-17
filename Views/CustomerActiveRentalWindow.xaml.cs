@@ -22,6 +22,7 @@ namespace AssignmentPRN212.Views
         private List<RentalOrderDTO> _allOrders = new List<RentalOrderDTO>();
         private RentalOrderDTO _selectedOrder;
         private Dictionary<int, string> _carNamesCache = new Dictionary<int, string>();
+        private Dictionary<int, CarDTO> _carsCache = new Dictionary<int, CarDTO>();
 
         public CustomerActiveRentalWindow(ApiService apiService, int userId)
         {
@@ -50,11 +51,12 @@ namespace AssignmentPRN212.Views
                     .Where(o => o.Status == "4" || o.Status.Equals("Renting", StringComparison.OrdinalIgnoreCase))
                     .ToList();
 
-                // Load tên xe
+                // Load thông tin xe cho tất cả CarId
                 var carIds = rentingOrders.Select(o => o.CarId).Distinct().ToList();
                 await LoadCarNames(carIds);
+                await LoadCars(carIds);
 
-                // Gán tên xe vào từng order
+                // Gán tên xe và tính toán giá tiền vào từng order
                 foreach (var order in rentingOrders)
                 {
                     if (_carNamesCache.ContainsKey(order.CarId))
@@ -64,6 +66,51 @@ namespace AssignmentPRN212.Views
                     else
                     {
                         order.CarName = $"Car #{order.CarId}";
+                    }
+                    
+                    // Tính phí tài xế và đảm bảo SubTotal/Deposit được tính đúng
+                    if (_carsCache.ContainsKey(order.CarId))
+                    {
+                        var car = _carsCache[order.CarId];
+                        int days = (order.ExpectedReturnTime - order.PickupTime).Days + 1;
+                        double pricePerDay = car.RentPricePerDay;
+                        double pricePerDayWithDriver = car.RentPricePerDayWithDriver;
+                        double driverFeePerDay = pricePerDayWithDriver - pricePerDay;
+                        
+                        // Tính phí tài xế tổng (nếu có tài xế) - chỉ để hiển thị
+                        double totalDriverFee = order.WithDriver ? driverFeePerDay * days : 0;
+                        order.DriverFeeText = $"{totalDriverFee:N0} VNĐ";
+                        
+                        // Kiểm tra nếu SubTotal hoặc Deposit từ backend là null/0 thì tính lại từ thông tin xe
+                        // (Trường hợp backend không trả về giá trị)
+                        if ((order.SubTotal == null || order.SubTotal == 0) || (order.Deposit == null || order.Deposit == 0))
+                        {
+                            // Tính lại SubTotal và Deposit từ thông tin xe
+                            // SubTotal = (giá không tài xế * số ngày) + phí tài xế
+                            order.SubTotal = (days * pricePerDay) + totalDriverFee;
+                            
+                            // Deposit = DepositAmount từ Car
+                            order.Deposit = car.DepositAmount;
+                            
+                            System.Diagnostics.Debug.WriteLine($"Order #{order.Id}: Calculated from car - SubTotal = {order.SubTotal}, Deposit = {order.Deposit}, TotalText = {order.TotalText}");
+                        }
+                        else
+                        {
+                            // Sử dụng giá trị từ backend (đã được lưu khi đặt hàng)
+                            System.Diagnostics.Debug.WriteLine($"Order #{order.Id}: Using backend values - SubTotal = {order.SubTotal}, Deposit = {order.Deposit}, TotalText = {order.TotalText}");
+                        }
+                    }
+                    else
+                    {
+                        // Nếu không có thông tin xe, chỉ tính phí tài xế nếu có
+                        if (order.WithDriver)
+                        {
+                            order.DriverFeeText = "N/A";
+                        }
+                        else
+                        {
+                            order.DriverFeeText = "0 VNĐ";
+                        }
                     }
                 }
 
@@ -92,6 +139,25 @@ namespace AssignmentPRN212.Views
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error loading car names: {ex.Message}");
+            }
+        }
+
+        private async Task LoadCars(List<int> carIds)
+        {
+            try
+            {
+                var allCars = await _carService.GetAllCarsAsync();
+                foreach (var car in allCars)
+                {
+                    if (!_carsCache.ContainsKey(car.Id))
+                    {
+                        _carsCache[car.Id] = car;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading cars: {ex.Message}");
             }
         }
 

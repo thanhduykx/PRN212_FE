@@ -167,68 +167,24 @@ namespace AssignmentPRN212.Services
             }
         }
 
-        // GET /api/Payment/GetDepositByOrderId - Lấy payment cọc theo OrderId (nếu có endpoint này)
-        public async Task<PaymentDTO?> GetDepositByOrderIdAsync(int orderId)
+        // GET /api/Payment/byRentalLocation - Lấy doanh thu theo địa điểm
+        public async Task<List<RevenueByLocationDTO>> GetRevenueByLocationAsync()
         {
             try
             {
-                var response = await _apiService.GetAsync<ApiResponse<PaymentDTO>>($"Payment/GetDepositByOrderId?orderId={orderId}");
-                return response?.Data;
+                var response = await _apiService.GetAsync<ApiResponse<DataWrapper<RevenueByLocationDTO>>>("Payment/byRentalLocation");
+                return response?.Data?.Values ?? new List<RevenueByLocationDTO>();
             }
             catch
             {
                 try
                 {
-                    var directResponse = await _apiService.GetAsync<PaymentDTO>($"Payment/GetDepositByOrderId?orderId={orderId}");
-                    return directResponse;
+                    var directResponse = await _apiService.GetAsync<List<RevenueByLocationDTO>>("Payment/byRentalLocation");
+                    return directResponse ?? new List<RevenueByLocationDTO>();
                 }
                 catch
                 {
-                    return null;
-                }
-            }
-        }
-
-        // GET /api/Payment/GetOrderPaymentByOrderId - Lấy payment đơn hàng theo OrderId (nếu có endpoint này)
-        public async Task<PaymentDTO?> GetOrderPaymentByOrderIdAsync(int orderId)
-        {
-            try
-            {
-                var response = await _apiService.GetAsync<ApiResponse<PaymentDTO>>($"Payment/GetOrderPaymentByOrderId?orderId={orderId}");
-                return response?.Data;
-            }
-            catch
-            {
-                try
-                {
-                    var directResponse = await _apiService.GetAsync<PaymentDTO>($"Payment/GetOrderPaymentByOrderId?orderId={orderId}");
-                    return directResponse;
-                }
-                catch
-                {
-                    return null;
-                }
-            }
-        }
-
-        // GET /api/Payment/GetByRentalLocation - Lấy payment theo địa điểm (cho báo cáo doanh thu)
-        public async Task<List<PaymentDTO>> GetByRentalLocationAsync()
-        {
-            try
-            {
-                var response = await _apiService.GetAsync<ApiResponse<DataWrapper<PaymentDTO>>>("Payment/GetByRentalLocation");
-                return response?.Data?.Values ?? new List<PaymentDTO>();
-            }
-            catch
-            {
-                try
-                {
-                    var directResponse = await _apiService.GetAsync<List<PaymentDTO>>("Payment/GetByRentalLocation");
-                    return directResponse ?? new List<PaymentDTO>();
-                }
-                catch
-                {
-                    return new List<PaymentDTO>();
+                    return new List<RevenueByLocationDTO>();
                 }
             }
         }
