@@ -1,19 +1,30 @@
 ﻿<Window x:Class="AssignmentPRN212.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Admin" Height="300" Width="400"
+        Title="Admin Dashboard" Height="600" Width="450"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize"
+        ResizeMode="CanResize"
         Background="#F5F5F5">
 
     <Grid>
         <Border CornerRadius="10" Background="White" Padding="20" Margin="20" 
                 HorizontalAlignment="Center" VerticalAlignment="Center"  >
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
-                <TextBlock Text="Manager System" FontSize="20" FontWeight="Bold" 
-                           Foreground="#333" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                <TextBlock Text="Hệ thống Quản trị" FontSize="24" FontWeight="Bold" 
+                           Foreground="#F44336" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Text="Admin Dashboard" FontSize="16" Foreground="#666" 
+                           HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                
+                <!-- Doanh thu -->
+                <Border Background="#E8F5E9" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                    <StackPanel>
+                        <TextBlock Text="💰 Doanh thu" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,5" Foreground="#4CAF50"/>
+                        <TextBlock x:Name="RevenueTextBlock" Text="Tổng doanh thu: 0 VNĐ" FontSize="14" Margin="0,0,0,3" Foreground="#2E7D32" FontWeight="SemiBold"/>
+                        <TextBlock x:Name="ThisMonthRevenueTextBlock" Text="Doanh thu tháng này: 0 VNĐ" FontSize="14" Foreground="#388E3C"/>
+                    </StackPanel>
+                </Border>
 
-                <Button x:Name="ViewCarsButton" Content="Xem xe" Width="180" Height="40" 
+                <Button x:Name="ViewCarsButton" Content="🚗 Quản lý xe" Width="180" Height="40" 
                         Margin="0,5" Background="#4CAF50" Foreground="White" FontWeight="SemiBold"
                         BorderThickness="0" Cursor="Hand"
                         Click="ViewCarsButton_Click">
@@ -38,7 +49,7 @@
                     </Button.Style>
                 </Button>
 
-                <Button x:Name="ViewUsersButton" Content="Xem user" Width="180" Height="40" 
+                <Button x:Name="ViewUsersButton" Content="👥 Quản lý người dùng" Width="180" Height="40" 
                         Margin="0,5" Background="#2196F3" Foreground="White" FontWeight="SemiBold"
                         BorderThickness="0" Cursor="Hand"
                         Click="ViewUsersButton_Click">
@@ -57,6 +68,131 @@
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="#1976D2"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button x:Name="ViewRentalLocationsButton" Content="📍 Quản lý địa điểm" Width="180" Height="40" 
+                        Margin="0,5" Background="#9C27B0" Foreground="White" FontWeight="SemiBold"
+                        BorderThickness="0" Cursor="Hand"
+                        Click="ViewRentalLocationsButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" 
+                                                CornerRadius="5">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#7B1FA2"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button x:Name="ViewRentalOrdersButton" Content="📋 Quản lý đơn hàng" Width="180" Height="40" 
+                        Margin="0,5" Background="#E91E63" Foreground="White" FontWeight="SemiBold"
+                        BorderThickness="0" Cursor="Hand"
+                        Click="ViewRentalOrdersButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" 
+                                                CornerRadius="5">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#C2185B"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button x:Name="ViewCarDeliveryHistoryButton" Content="📦 Lịch sử giao xe" Width="180" Height="40" 
+                        Margin="0,5" Background="#00BCD4" Foreground="White" FontWeight="SemiBold"
+                        BorderThickness="0" Cursor="Hand"
+                        Click="ViewCarDeliveryHistoryButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" 
+                                                CornerRadius="5">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#0097A7"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button x:Name="ViewCarReturnHistoryButton" Content="📥 Lịch sử trả xe" Width="180" Height="40" 
+                        Margin="0,5" Background="#795548" Foreground="White" FontWeight="SemiBold"
+                        BorderThickness="0" Cursor="Hand"
+                        Click="ViewCarReturnHistoryButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" 
+                                                CornerRadius="5">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#5D4037"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button x:Name="ViewCarRentalLocationButton" Content="🚙 Xe tại địa điểm" Width="180" Height="40" 
+                        Margin="0,5" Background="#3F51B5" Foreground="White" FontWeight="SemiBold"
+                        BorderThickness="0" Cursor="Hand"
+                        Click="ViewCarRentalLocationButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" 
+                                                CornerRadius="5">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#303F9F"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>

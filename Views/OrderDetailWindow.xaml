@@ -1,0 +1,81 @@
+<Window x:Class="AssignmentPRN212.Views.OrderDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Chi tiết đơn hàng" Height="500" Width="700"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+
+    <Grid Margin="20">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="Chi tiết đơn hàng" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
+                
+                <Border Background="White" CornerRadius="5" Padding="15" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Thông tin cơ bản" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                                <TextBlock Text="Mã đơn:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBlock Text="SĐT:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                                <TextBlock Text="Ngày đặt:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                                <TextBlock Text="Nhận xe:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                                <TextBlock Text="Trả xe:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                                <TextBlock Text="Có tài xế:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                                <TextBlock Text="Trạng thái:" FontWeight="SemiBold" Margin="0,5,0,0"/>
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Column="1">
+                                <TextBlock x:Name="OrderIdTextBlock" Text="" Margin="0,0,0,5"/>
+                                <TextBlock x:Name="PhoneNumberTextBlock" Text="" Margin="0,5,0,5"/>
+                                <TextBlock x:Name="OrderDateTextBlock" Text="" Margin="0,5,0,5"/>
+                                <TextBlock x:Name="PickupTimeTextBlock" Text="" Margin="0,5,0,5"/>
+                                <TextBlock x:Name="ReturnTimeTextBlock" Text="" Margin="0,5,0,5"/>
+                                <TextBlock x:Name="WithDriverTextBlock" Text="" Margin="0,5,0,5"/>
+                                <TextBlock x:Name="StatusTextBlock" Text="" Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="White" CornerRadius="5" Padding="15">
+                    <StackPanel>
+                        <TextBlock Text="Thông tin thanh toán" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                                <TextBlock Text="Tạm tính:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBlock Text="Đặt cọc:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                                <TextBlock Text="Phí tài xế:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                                <TextBlock Text="Phí phát sinh:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                                <TextBlock Text="Phí hư hỏng:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                                <TextBlock Text="Giảm giá:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                                <TextBlock Text="Tổng tiền:" FontSize="16" FontWeight="Bold" Margin="0,5,0,0"/>
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Column="1">
+                                <TextBlock x:Name="SubTotalTextBlock" Text="" Margin="0,0,0,5"/>
+                                <TextBlock x:Name="DepositTextBlock" Text="" Margin="0,5,0,5"/>
+                                <TextBlock x:Name="DriverFeeTextBlock" Text="" Margin="0,5,0,5"/>
+                                <TextBlock x:Name="ExtraFeeTextBlock" Text="" Margin="0,5,0,5"/>
+                                <TextBlock x:Name="DamageFeeTextBlock" Text="" Margin="0,5,0,5"/>
+                                <TextBlock x:Name="DiscountTextBlock" Text="" Margin="0,5,0,5"/>
+                                <TextBlock x:Name="TotalTextBlock" Text="" FontSize="18" FontWeight="Bold" 
+                                           Foreground="#4CAF50" Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
+

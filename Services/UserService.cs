@@ -58,22 +58,59 @@ namespace AssignmentPRN212.Services
         // Cập nhật tên customer
         public async Task<UserDTO?> UpdateCustomerNameAsync(UpdateCustomerNameDTO dto)
         {
-            var response = await _api.PutAsync<UpdateCustomerNameDTO, ApiResponse<UserDTO>>("User/UpdateCustomerName", dto);
-            return response?.Data;
+            try
+            {
+                var response = await _api.PutAsync<UpdateCustomerNameDTO, ApiResponse<UserDTO>>("User/UpdateCustomerName", dto);
+                return response?.Data;
+            }
+            catch
+            {
+                try
+                {
+                    var directResponse = await _api.PutAsync<UpdateCustomerNameDTO, UserDTO>("User/UpdateCustomerName", dto);
+                    return directResponse;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
         }
 
         // Cập nhật password customer
         public async Task<UserDTO?> UpdateCustomerPasswordAsync(UpdateCustomerPasswordDTO dto)
         {
-            var response = await _api.PutAsync<UpdateCustomerPasswordDTO, ApiResponse<UserDTO>>("User/UpdateCustomerPassword", dto);
-            return response?.Data;
+            try
+            {
+                var response = await _api.PutAsync<UpdateCustomerPasswordDTO, ApiResponse<UserDTO>>("User/UpdateCustomerPassword", dto);
+                return response?.Data;
+            }
+            catch
+            {
+                try
+                {
+                    var directResponse = await _api.PutAsync<UpdateCustomerPasswordDTO, UserDTO>("User/UpdateCustomerPassword", dto);
+                    return directResponse;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
         }
 
-        // Xóa user (id là GUID)
-        public async Task<bool> DeleteUserAsync(Guid id)
+        // Xóa user
+        public async Task<bool> DeleteUserAsync(int id)
         {
-            var response = await _api.DeleteAsync<ApiResponse<object>>($"User/{id}");
-            return response != null;
+            try
+            {
+                var response = await _api.DeleteAsync<ApiResponse<object>>($"User/{id}");
+                return response != null;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         // Register

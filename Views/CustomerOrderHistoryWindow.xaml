@@ -1,0 +1,70 @@
+<Window x:Class="AssignmentPRN212.Views.CustomerOrderHistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Lịch sử đơn hàng của tôi" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F0F0">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="White" CornerRadius="5" Padding="15" Margin="0,0,0,10">
+            <TextBlock Text="📋 Lịch sử đơn hàng của tôi" FontSize="20" FontWeight="Bold"/>
+        </Border>
+
+        <!-- Orders List -->
+        <DataGrid x:Name="OrdersDataGrid" AutoGenerateColumns="False" SelectionMode="Single"
+                  CanUserAddRows="False" CanUserDeleteRows="False"
+                  Grid.Row="1" HeadersVisibility="Column"
+                  RowBackground="#FFFFFF" AlternatingRowBackground="#F7F7F7"
+                  GridLinesVisibility="None"
+                  SelectionChanged="OrdersDataGrid_SelectionChanged"
+                  FontSize="14" FontWeight="Normal">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Ngày đặt" Binding="{Binding OrderDate, StringFormat=dd/MM/yyyy}" Width="100"/>
+                <DataGridTextColumn Header="Nhận xe" Binding="{Binding PickupTime, StringFormat=dd/MM/yyyy HH:mm}" Width="130"/>
+                <DataGridTextColumn Header="Trả xe" Binding="{Binding ExpectedReturnTime, StringFormat=dd/MM/yyyy HH:mm}" Width="130"/>
+                <DataGridTextColumn Header="Tổng tiền" Binding="{Binding Total, StringFormat=N0}" Width="120"/>
+                <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="120"/>
+                <DataGridTemplateColumn Header="Thao tác" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Chi tiết" Width="80" Height="30" Margin="0,0,5,0"
+                                        Background="#2196F3" Foreground="White" FontSize="12"
+                                        BorderThickness="0" Cursor="Hand"
+                                        Click="ViewDetailButton_Click" Tag="{Binding}"/>
+                                <Button Content="Thanh toán" Width="90" Height="30" Margin="0,0,5,0"
+                                        Background="#4CAF50" Foreground="White" FontSize="12"
+                                        BorderThickness="0" Cursor="Hand"
+                                        Click="PayButton_Click" Tag="{Binding}">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <!-- Mặc định ẩn nút, chỉ hiển thị khi status là PaymentPending -->
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <!-- Hiển thị nút khi status là PaymentPending (6) -->
+                                                <DataTrigger Binding="{Binding Status}" Value="PaymentPending">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Status}" Value="6">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
+

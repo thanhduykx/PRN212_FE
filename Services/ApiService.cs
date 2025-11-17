@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AssignmentPRN212.Services
@@ -10,10 +11,21 @@ namespace AssignmentPRN212.Services
     {
         private readonly HttpClient _client;
         private string _token;
+        private readonly JsonSerializerOptions _jsonOptions;
 
         public ApiService(string baseUrl)
         {
             _client = new HttpClient { BaseAddress = new Uri(baseUrl) };
+            
+            // Cấu hình JSON options - Property naming policy để match với backend (camelCase)
+            _jsonOptions = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase, // Chuyển sang camelCase để match với backend
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                WriteIndented = false,
+                // Ignore reference tracking metadata ($id, $ref) từ backend
+                ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles
+            };
         }
 
         public void SetToken(string token)
@@ -34,23 +46,62 @@ namespace AssignmentPRN212.Services
         {
             var response = await _client.GetAsync(endpoint);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<T>();
+            
+            try
+            {
+                // Sử dụng custom JsonSerializerOptions để deserialize với camelCase
+                return await response.Content.ReadFromJsonAsync<T>(_jsonOptions);
+            }
+            catch (JsonException jsonEx)
+            {
+                // Log chi tiết lỗi JSON để debug
+                var content = await response.Content.ReadAsStringAsync();
+                System.Diagnostics.Debug.WriteLine($"JsonException in GetAsync({endpoint}): {jsonEx.Message}");
+                if (!string.IsNullOrEmpty(content))
+                {
+                    int length = Math.Min(500, content.Length);
+                    System.Diagnostics.Debug.WriteLine($"Response content (first {length} chars): {content.Substring(0, length)}");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("Response content is empty or null");
+                }
+                throw;
+            }
         }
 
         // POST dữ liệu và parse JSON response
         public async Task<TResponse> PostAsync<TRequest, TResponse>(string endpoint, TRequest data)
         {
-            var response = await _client.PostAsJsonAsync(endpoint, data);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<TResponse>();
+            // Serialize với custom options
+            var jsonContent = JsonSerializer.Serialize(data, _jsonOptions);
+            var content = new StringContent(jsonContent, System.Text.Encoding.UTF8, "application/json");
+            
+            var response = await _client.PostAsync(endpoint, content);
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new HttpRequestException($"HTTP {(int)response.StatusCode} {response.StatusCode}: {errorContent}");
+            }
+            // Sử dụng custom JsonSerializerOptions để deserialize với camelCase
+            return await response.Content.ReadFromJsonAsync<TResponse>(_jsonOptions);
         }
 
         // PUT dữ liệu và parse JSON response
         public async Task<TResponse> PutAsync<TRequest, TResponse>(string endpoint, TRequest data)
         {
-            var response = await _client.PutAsJsonAsync(endpoint, data);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<TResponse>();
+            // Serialize với custom options
+            var jsonContent = JsonSerializer.Serialize(data, _jsonOptions);
+            var content = new StringContent(jsonContent, System.Text.Encoding.UTF8, "application/json");
+            
+            var response = await _client.PutAsync(endpoint, content);
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new HttpRequestException($"HTTP {(int)response.StatusCode} {response.StatusCode}: {errorContent}");
+            }
+            // Sử dụng custom JsonSerializerOptions để deserialize với camelCase
+            return await response.Content.ReadFromJsonAsync<TResponse>(_jsonOptions);
         }
 
         // DELETE và parse JSON response
@@ -58,7 +109,8 @@ namespace AssignmentPRN212.Services
         {
             var response = await _client.DeleteAsync(endpoint);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<TResponse>();
+            // Sử dụng custom JsonSerializerOptions để deserialize với camelCase
+            return await response.Content.ReadFromJsonAsync<TResponse>(_jsonOptions);
         }
 
         // GET raw string

@@ -5,18 +5,40 @@
         Title="Danh sách xe" Height="720" Width="1500">
     <Grid Margin="10">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
+        <!-- Search Box -->
+        <Border Grid.Row="0" Background="White" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="🔍" FontSize="18" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox x:Name="SearchTextBox" Width="300" Height="30" 
+                         Padding="5" VerticalContentAlignment="Center"
+                         TextChanged="SearchTextBox_TextChanged"
+                         Tag="Tìm kiếm theo Tên, Model, Size, Battery..."/>
+                <TextBlock Text="Tổng số: " FontWeight="SemiBold" VerticalAlignment="Center" Margin="20,0,5,0"/>
+                <TextBlock x:Name="TotalCountTextBlock" Text="0" FontWeight="Bold" VerticalAlignment="Center" Foreground="#2196F3"/>
+            </StackPanel>
+        </Border>
+
         <!-- DataGrid -->
-        <DataGrid x:Name="CarDataGrid" AutoGenerateColumns="False" Grid.Row="0"
-          SelectionChanged="CarDataGrid_SelectionChanged" IsReadOnly="True">
+        <DataGrid x:Name="CarDataGrid" AutoGenerateColumns="False" Grid.Row="1"
+          SelectionChanged="CarDataGrid_SelectionChanged" IsReadOnly="True"
+          LoadingRow="CarDataGrid_LoadingRow">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTemplateColumn Header="STT" Width="50" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Header}" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
                 <DataGridTextColumn Header="Model" Binding="{Binding Model}" Width="*"/>
-                <DataGridTextColumn Header="Seats" Binding="{Binding Seats}" Width="50"/>
                 <DataGridTextColumn Header="Seats" Binding="{Binding Seats}" Width="50"/>
                 <DataGridTextColumn Header="Size" Binding="{Binding SizeType}" Width="80"/>
                 <DataGridTextColumn Header="Trunk" Binding="{Binding TrunkCapacity}" Width="80"/>
@@ -26,69 +48,132 @@
                 <DataGridTextColumn Header="Rent/Hour" Binding="{Binding RentPricePerHour}" Width="100"/>
                 <DataGridTextColumn Header="Rent/Day w/Driver" Binding="{Binding RentPricePerDayWithDriver}" Width="120"/>
                 <DataGridTextColumn Header="Rent/Hour w/Driver" Binding="{Binding RentPricePerHourWithDriver}" Width="120"/>
-                <DataGridTextColumn Header="ImageUrl" Binding="{Binding ImageUrl}" Width="150"/>
-                <DataGridTextColumn Header="ImageUrl2" Binding="{Binding ImageUrl2}" Width="150"/>
-                <DataGridTextColumn Header="ImageUrl3" Binding="{Binding ImageUrl3}" Width="150"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="80"/>
+                <DataGridTextColumn Header="DepositAmount" Width="120">
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="DepositAmount" StringFormat="{}{0:N0}"/>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Địa điểm" Binding="{Binding LocationName}" Width="150"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding StatusText}" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
 
 
         <!-- Panel nhập liệu -->
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical" Margin="0,10,0,0">
 
-                <!-- Row 1: Name, Model, Seats -->
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                    <Label Content="Name:" Width="80"/>
-                    <TextBox x:Name="NameTextBox" Width="150"/>
+                <!-- Row 1: Tên xe, Model, Số chỗ ngồi -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Label Content="Tên xe:" Width="120"/>
+                    <TextBox x:Name="NameTextBox" Width="200"/>
                     <Label Content="Model:" Width="80" Margin="20,0,0,0"/>
                     <TextBox x:Name="ModelTextBox" Width="150"/>
-                    <Label Content="Seats:" Width="80" Margin="20,0,0,0"/>
-                    <TextBox x:Name="SeatsTextBox" Width="50"/>
+                    <Label Content="Số chỗ ngồi:" Width="100" Margin="20,0,0,0"/>
+                    <TextBox x:Name="SeatsTextBox" Width="60"/>
                 </StackPanel>
 
-                <!-- Row 2: Size, Trunk, BatteryType, Duration, Status -->
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                    <Label Content="Size:" Width="80"/>
-                    <TextBox x:Name="SizeTextBox" Width="100"/>
-                    <Label Content="Trunk:" Width="80" Margin="20,0,0,0"/>
-                    <TextBox x:Name="TrunkTextBox" Width="50"/>
-                    <Label Content="Battery Type:" Width="100" Margin="20,0,0,0"/>
-                    <TextBox x:Name="BatteryTypeTextBox" Width="100"/>
-                    <Label Content="Duration:" Width="70" Margin="20,0,0,0"/>
-                    <TextBox x:Name="BatteryDurationTextBox" Width="50"/>
-                    <Label Content="Status:" Width="60" Margin="20,0,0,0"/>
-                    <TextBox x:Name="StatusTextBox" Width="50"/>
+                <!-- Row 2: Loại xe, Dung tích cốp, Loại pin, Quãng đường -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Label Content="Loại xe:" Width="120"/>
+                    <ComboBox x:Name="SizeTypeComboBox" Width="150" IsEditable="True">
+                        <ComboBoxItem Content="Sedan"/>
+                        <ComboBoxItem Content="SUV"/>
+                        <ComboBoxItem Content="Hatchback"/>
+                        <ComboBoxItem Content="Coupe"/>
+                        <ComboBoxItem Content="Convertible"/>
+                        <ComboBoxItem Content="Wagon"/>
+                        <ComboBoxItem Content="Van"/>
+                        <ComboBoxItem Content="Pickup"/>
+                        <ComboBoxItem Content="Crossover"/>
+                    </ComboBox>
+                    <Label Content="Dung tích cốp (lít):" Width="130" Margin="20,0,0,0"/>
+                    <TextBox x:Name="TrunkTextBox" Width="80"/>
+                    <Label Content="Loại pin:" Width="80" Margin="20,0,0,0"/>
+                    <ComboBox x:Name="BatteryTypeComboBox" Width="150" IsEditable="True">
+                        <ComboBoxItem Content="Lithium-ion"/>
+                        <ComboBoxItem Content="Lead-acid"/>
+                        <ComboBoxItem Content="Nickel-metal hydride"/>
+                        <ComboBoxItem Content="Solid-state"/>
+                    </ComboBox>
+                    <Label Content="Quãng đường (km):" Width="120" Margin="20,0,0,0"/>
+                    <TextBox x:Name="BatteryDurationTextBox" Width="80"/>
                 </StackPanel>
 
-                <!-- Row 3: Rent Prices -->
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                    <Label Content="Rent/Day:" Width="80"/>
-                    <TextBox x:Name="RentTextBox" Width="80"/>
-                    <Label Content="Rent/Hour:" Width="80" Margin="20,0,0,0"/>
-                    <TextBox x:Name="RentHourTextBox" Width="80"/>
-                    <Label Content="Rent/Day w/Driver:" Width="120" Margin="20,0,0,0"/>
-                    <TextBox x:Name="RentDayDriverTextBox" Width="100"/>
-                    <Label Content="Rent/Hour w/Driver:" Width="130" Margin="20,0,0,0"/>
-                    <TextBox x:Name="RentHourDriverTextBox" Width="80"/>
+                <!-- Row 3: Giá thuê -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Label Content="Giá thuê/ngày (VND):" Width="150"/>
+                    <TextBox x:Name="RentTextBox" Width="120"/>
+                    <Label Content="Giá thuê/giờ (VND):" Width="130" Margin="20,0,0,0"/>
+                    <TextBox x:Name="RentHourTextBox" Width="120"/>
+                    <Label Content="Giá thuê/ngày (có tài xế):" Width="160" Margin="20,0,0,0"/>
+                    <TextBox x:Name="RentDayDriverTextBox" Width="120"/>
+                    <Label Content="Giá thuê/giờ (có tài xế):" Width="160" Margin="20,0,0,0"/>
+                    <TextBox x:Name="RentHourDriverTextBox" Width="120"/>
                 </StackPanel>
 
-                <!-- Row 4: Image URLs -->
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                    <Label Content="ImageUrl:" Width="80"/>
-                    <TextBox x:Name="ImageUrlTextBox" Width="200"/>
-                    <Label Content="ImageUrl2:" Width="80" Margin="20,0,0,0"/>
-                    <TextBox x:Name="ImageUrl2TextBox" Width="200"/>
-                    <Label Content="ImageUrl3:" Width="80" Margin="20,0,0,0"/>
-                    <TextBox x:Name="ImageUrl3TextBox" Width="200"/>
+                <!-- Row 4: DepositAmount, Trạng thái, Kích hoạt -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Label Content="Số tiền đặt cọc (VND):" Width="160"/>
+                    <TextBox x:Name="DepositAmountTextBox" Width="150"/>
+                    <Label Content="Trạng thái:" Width="80" Margin="20,0,0,0"/>
+                    <ComboBox x:Name="StatusComboBox" Width="100">
+                        <ComboBoxItem Content="0 - Còn xe" Tag="0"/>
+                        <ComboBoxItem Content="1 - Hết xe" Tag="1"/>
+                    </ComboBox>
+                    <CheckBox x:Name="IsActiveCheckBox" Content="Kích hoạt" IsChecked="True" Margin="30,0,0,0" VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <!-- Row 5: Buttons -->
+                <!-- Row 5: Địa điểm cho thuê -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Label Content="Địa điểm cho thuê:" Width="160" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="RentalLocationComboBox" Width="400" DisplayMemberPath="Name" Margin="0,0,0,0" SelectionChanged="RentalLocationComboBox_SelectionChanged"/>
+                </StackPanel>
+
+                <!-- Row 6: URL ảnh xe chính -->
+                <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                    <Label Content="URL ảnh xe chính (bắt buộc):" FontWeight="SemiBold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="ImageUrlTextBox" Width="500" Margin="0,0,10,0"/>
+                        <Button Content="📁 Upload ảnh chính" Width="150" Click="UploadImage1Button_Click"/>
+                    </StackPanel>
+                    <TextBlock Text="Hoặc upload ảnh chính từ máy" FontStyle="Italic" Foreground="Gray" Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <!-- Row 7: URL ảnh xe phụ 1 -->
+                <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                    <Label Content="URL ảnh xe phụ 1 (bắt buộc):" FontWeight="SemiBold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="ImageUrl2TextBox" Width="500" Margin="0,0,10,0"/>
+                        <Button Content="📁 Upload ảnh phụ 1" Width="150" Click="UploadImage2Button_Click"/>
+                    </StackPanel>
+                    <TextBlock Text="Hoặc upload ảnh phụ 1 từ máy" FontStyle="Italic" Foreground="Gray" Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <!-- Row 8: URL ảnh xe phụ 2 -->
+                <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                    <Label Content="URL ảnh xe phụ 2 (bắt buộc):" FontWeight="SemiBold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="ImageUrl3TextBox" Width="500" Margin="0,0,10,0"/>
+                        <Button Content="📁 Upload ảnh phụ 2" Width="150" Click="UploadImage3Button_Click"/>
+                    </StackPanel>
+                    <TextBlock Text="Hoặc upload ảnh phụ 2 từ máy" FontStyle="Italic" Foreground="Gray" Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <!-- Row 9: Thông tin upload -->
+                <Border Background="#E3F2FD" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="✓ Chấp nhận: JPG, PNG, GIF, WEBP" FontSize="11"/>
+                        <TextBlock Text="✓ Kích thước tối đa: 5MB" FontSize="11"/>
+                        <TextBlock Text="✓ Ảnh sẽ được lưu trên Cloudinary (CDN tốc độ cao)" FontSize="11"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Row 10: Buttons -->
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                    <Button Content="Add" Width="80" Click="AddButton_Click"/>
-                    <Button Content="Update" Width="80" Margin="10,0,0,0" Click="UpdateButton_Click"/>
-                    <Button Content="Delete" Width="80" Margin="10,0,0,0" Click="DeleteButton_Click"/>
+                    <Button x:Name="AddButton" Content="➕ Thêm xe" Width="120" Height="35" Click="AddButton_Click" FontSize="14"/>
+                    <Button x:Name="UpdateButton" Content="✏️ Cập nhật" Width="120" Height="35" Margin="10,0,0,0" Click="UpdateButton_Click" FontSize="14"/>
+                    <Button x:Name="DeleteButton" Content="🗑️ Xóa" Width="120" Height="35" Margin="10,0,0,0" Click="DeleteButton_Click" FontSize="14"/>
                 </StackPanel>
 
             </StackPanel>

@@ -7,17 +7,17 @@ namespace AssignmentPRN212.DTO
         public string Address { get; set; } = "";
         public string Coordinates { get; set; } = "";
         public bool IsActive { get; set; }
-        public bool IsDeleted { get; set; }
     }
 
-    public class CreateRentalLocationRequest
+    public class CreateRentalLocationDTO
     {
         public string Name { get; set; } = "";
         public string Address { get; set; } = "";
         public string Coordinates { get; set; } = "";
+        public bool IsActive { get; set; } = true;
     }
 
-    public class UpdateRentalLocationRequest
+    public class UpdateRentalLocationDTO
     {
         public int Id { get; set; }
         public string Name { get; set; } = "";

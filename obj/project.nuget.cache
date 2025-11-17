@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YC/0J2tHpcA=",
+  "dgSpecHash": "EW1sFrB/K9M=",
   "success": true,
-  "projectFilePath": "C:\\Project_PRN\\AssignmentPRN212\\AssignmentPRN212\\AssignmentPRN212.csproj",
+  "projectFilePath": "C:\\Project_PRN\\AssignmentPRN212\\PRN212_FE\\AssignmentPRN212.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\duong.THANHDUY\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.10\\microsoft.extensions.configuration.9.0.10.nupkg.sha512",
     "C:\\Users\\duong.THANHDUY\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.10\\microsoft.extensions.configuration.abstractions.9.0.10.nupkg.sha512",

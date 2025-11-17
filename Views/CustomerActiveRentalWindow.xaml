@@ -1,0 +1,82 @@
+<Window x:Class="AssignmentPRN212.Views.CustomerActiveRentalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Xe đang thuê" Height="700" Width="1400"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Search Box -->
+        <Border Grid.Row="0" Background="White" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="🔍" FontSize="18" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox x:Name="SearchTextBox" Width="300" Height="30" 
+                         Padding="5" VerticalContentAlignment="Center"
+                         TextChanged="SearchTextBox_TextChanged"
+                         Tag="Tìm kiếm theo ID, Tên xe..."/>
+                <TextBlock Text="Tổng số: " FontWeight="SemiBold" VerticalAlignment="Center" Margin="20,0,5,0"/>
+                <TextBlock x:Name="TotalCountTextBlock" Text="0" FontWeight="Bold" VerticalAlignment="Center" Foreground="#2196F3"/>
+                <Button Content="🔄 Làm mới" Width="100" Height="30" Margin="20,0,0,0" Click="RefreshButton_Click"/>
+            </StackPanel>
+        </Border>
+
+        <!-- DataGrid -->
+        <DataGrid x:Name="RentalOrderDataGrid" AutoGenerateColumns="False" Grid.Row="1"
+                  IsReadOnly="True" SelectionChanged="RentalOrderDataGrid_SelectionChanged"
+                  Margin="0,0,0,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Order ID" Binding="{Binding Id}" Width="80"/>
+                <DataGridTextColumn Header="Tên xe" Binding="{Binding CarName}" Width="200"/>
+                <DataGridTextColumn Header="Ngày đặt" Binding="{Binding OrderDate, StringFormat='{}{0:dd/MM/yyyy}'}" Width="100"/>
+                <DataGridTextColumn Header="Thời gian nhận" Binding="{Binding PickupTime, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Width="150"/>
+                <DataGridTextColumn Header="Thời gian trả dự kiến" Binding="{Binding ExpectedReturnTime, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Width="150"/>
+                <DataGridTextColumn Header="Có tài xế" Binding="{Binding WithDriverText}" Width="80"/>
+                <DataGridTextColumn Header="Tổng tiền" Width="120">
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="Total" StringFormat="{}{0:N0} VNĐ"/>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Action Panel -->
+        <Border Grid.Row="2" Background="White" CornerRadius="10" Padding="15">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Chọn đơn hàng và nhấn 'Trả xe' để hoàn tất thuê xe" 
+                          FontSize="14" VerticalAlignment="Center" Margin="0,0,20,0" Foreground="#666"/>
+                <Button x:Name="ReturnCarButton" Content="🚗 Trả xe" Width="150" Height="40" 
+                        Background="#4CAF50" Foreground="White" FontSize="16" FontWeight="SemiBold"
+                        BorderThickness="0" Cursor="Hand" Click="ReturnCarButton_Click"
+                        IsEnabled="False">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#45A049"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" Value="#CCCCCC"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
+

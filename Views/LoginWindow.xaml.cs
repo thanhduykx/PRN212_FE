@@ -6,15 +6,16 @@ namespace AssignmentPRN212.Views
     public partial class LoginWindow : Window
     {
         private readonly ApiService _apiService;
-
         private readonly UserService _userService;
+        private readonly Window? _parentWindow;
 
-        public LoginWindow()
+        public LoginWindow(Window? parentWindow = null)
         {
             InitializeComponent();
             string apiBaseUrl = "https://localhost:7200/api/";
             _apiService = new ApiService(apiBaseUrl); // ✅ truyền BaseUrl
             _userService = new UserService(_apiService);
+            _parentWindow = parentWindow;
         }
 
         private async void Login_Click(object sender, RoutedEventArgs e)
@@ -30,17 +31,15 @@ namespace AssignmentPRN212.Views
                 {
                     _apiService.SetToken(result.Token); // Set token cho ApiService
 
-                    if (result.Role == "Admin")
+                    // Đóng HomeWindow cũ (nếu có)
+                    if (_parentWindow != null)
                     {
-                        var mainWindow  = new MainWindow(_apiService,"Admin"); // AdminWindow có 2 button: Xem User, Xem Car
-                        mainWindow.Show();
-                    }
-                    else
-                    {
-                        var carListWindow = new CarListWindow(_apiService); // Staff hoặc Customer
-                        carListWindow.Show();
+                        _parentWindow.Close();
                     }
 
+                    // Mở HomeWindow mới với thông tin đã đăng nhập
+                    var homeWindow = new HomeWindow(_apiService, result.Role, result.UserId);
+                    homeWindow.Show();
                     this.Close();
                 }
                 else

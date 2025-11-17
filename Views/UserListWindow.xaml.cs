@@ -15,6 +15,7 @@ namespace AssignmentPRN212.Views
 
         // ObservableCollection bind DataGrid
         public ObservableCollection<UserDTO> Users { get; set; } = new ObservableCollection<UserDTO>();
+        private List<UserDTO> _allUsers = new List<UserDTO>(); // Lưu danh sách gốc để filter
         private UserDTO _selectedUser;
 
         public UserListWindow(ApiService apiService)
@@ -33,14 +34,43 @@ namespace AssignmentPRN212.Views
             try
             {
                 var users = await _userService.GetAllUsersAsync();
-                Users.Clear();
-                foreach (var user in users)
-                    Users.Add(user);
+                _allUsers = users.ToList();
+                ApplyFilter();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Load lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void ApplyFilter()
+        {
+            string searchText = SearchTextBox?.Text?.ToLower() ?? "";
+            
+            var filtered = _allUsers.Where(user =>
+                string.IsNullOrWhiteSpace(searchText) ||
+                user.Email.ToLower().Contains(searchText) ||
+                user.FullName.ToLower().Contains(searchText) ||
+                user.Role.ToLower().Contains(searchText)
+            ).ToList();
+
+            Users.Clear();
+            foreach (var user in filtered)
+                Users.Add(user);
+
+            if (TotalCountTextBlock != null)
+                TotalCountTextBlock.Text = Users.Count.ToString();
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ApplyFilter();
+        }
+
+        private void UsersDataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            // Hiển thị số thứ tự (STT) bắt đầu từ 1
+            e.Row.Header = (e.Row.GetIndex() + 1).ToString();
         }
 
         private void UsersDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -59,55 +89,6 @@ namespace AssignmentPRN212.Views
         private async void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             await LoadUsers();
-        }
-
-        private async void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var newUser = new UserDTO
-                {
-                    Email = EmailTextBox.Text.Trim(),
-                    FullName = FullNameTextBox.Text.Trim(),
-                    Role = RoleTextBox.Text.Trim(),
-                    IsActive = IsActiveCheckBox.IsChecked ?? false
-                };
-
-                // Validation
-                if (string.IsNullOrWhiteSpace(newUser.Email) || string.IsNullOrWhiteSpace(newUser.FullName))
-                {
-                    MessageBox.Show("Email và Full Name không được để trống.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(newUser.Role))
-                {
-                    MessageBox.Show("Role không được để trống.", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                var addedUser = await _userService.AddStaffAsync(new CreateStaffUserDTO
-                {
-                    Email = newUser.Email,
-                    FullName = newUser.FullName,
-                    Password = "Default@123", // Mật khẩu mặc định
-                    Role = newUser.Role
-                    });
-                if (addedUser != null)
-                {
-                    MessageBox.Show("Thêm user thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
-                    await LoadUsers();
-                    ClearInputs();
-                }
-                else
-                {
-                    MessageBox.Show("Thêm user thất bại. Kiểm tra dữ liệu hoặc token.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
         }
 
         private async void UpdateButton_Click(object sender, RoutedEventArgs e)

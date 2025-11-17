@@ -1,0 +1,117 @@
+<Window x:Class="AssignmentPRN212.Views.CarBookingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Đặt xe" Height="700" Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Car Info -->
+        <Border Grid.Row="0" Background="White" CornerRadius="10" Padding="20" Margin="0,0,0,15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Image Grid.Column="0" Source="{Binding SelectedCar.ImageUrl}" Height="150" 
+                       Stretch="UniformToFill" Margin="0,0,20,0"/>
+                
+                <StackPanel Grid.Column="1">
+                    <TextBlock x:Name="CarNameTextBlock" Text="" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock x:Name="CarModelTextBlock" Text="" FontSize="16" Foreground="#666" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="👥 " FontSize="14"/>
+                        <TextBlock x:Name="CarSeatsTextBlock" Text="" FontSize="14"/>
+                        <TextBlock Text=" chỗ" FontSize="14" Margin="5,0,15,0"/>
+                        <TextBlock Text="🔋 " FontSize="14"/>
+                        <TextBlock x:Name="CarBatteryTextBlock" Text="" FontSize="14"/>
+                        <TextBlock Text=" km" FontSize="14" Margin="5,0,15,0"/>
+                        <TextBlock Text="📦 " FontSize="14"/>
+                        <TextBlock x:Name="CarTrunkTextBlock" Text="" FontSize="14"/>
+                        <TextBlock Text=" L" FontSize="14" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="💰 Giá thuê: " FontSize="16" FontWeight="SemiBold"/>
+                        <TextBlock x:Name="CarPriceTextBlock" Text="" FontSize="18" FontWeight="Bold" Foreground="#4CAF50"/>
+                        <TextBlock Text=" VNĐ/ngày" FontSize="14" Foreground="#666" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Booking Form -->
+        <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="20">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="Thông tin đặt xe" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
+
+                    <!-- Pickup Location -->
+                    <Label Content="📍 Địa điểm nhận xe:" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="LocationComboBox" Height="40" Margin="0,0,0,15"
+                              DisplayMemberPath="Name" SelectionChanged="LocationComboBox_SelectionChanged"/>
+
+                    <!-- Pickup Time -->
+                    <Label Content="📅 Ngày giờ nhận xe:" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <DatePicker x:Name="PickupDatePicker" Height="40" Margin="0,0,0,15" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+
+                    <!-- Return Time -->
+                    <Label Content="📅 Ngày giờ trả xe:" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <DatePicker x:Name="ReturnDatePicker" Height="40" Margin="0,0,0,15" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+
+                    <!-- Phone Number -->
+                    <Label Content="📞 Số điện thoại:" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="PhoneNumberTextBox" Height="40" Padding="10" FontSize="14" Margin="0,0,0,15"/>
+
+                    <!-- With Driver -->
+                    <CheckBox x:Name="WithDriverCheckBox" Content="Có tài xế" FontSize="14" Margin="0,0,0,15"
+                              Checked="WithDriverCheckBox_Checked" Unchecked="WithDriverCheckBox_Unchecked"/>
+
+                    <!-- Price Summary -->
+                    <Border Background="#E3F2FD" CornerRadius="5" Padding="15" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="💰 Tổng tiền dự kiến" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock x:Name="RentalDaysTextBlock" Text="Số ngày: 0" FontSize="14" Margin="0,0,0,5"/>
+                                    <TextBlock x:Name="PricePerDayTextBlock" Text="Giá/ngày: 0 VNĐ" FontSize="14" Margin="0,0,0,5"/>
+                                    <TextBlock x:Name="DriverFeeTextBlock" Text="Phí tài xế: 0 VNĐ" FontSize="14" Margin="0,0,0,5"/>
+                                </StackPanel>
+                                
+                                <TextBlock x:Name="TotalPriceTextBlock" Grid.Column="1" Text="0 VNĐ" 
+                                           FontSize="24" FontWeight="Bold" Foreground="#4CAF50"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Notes -->
+                    <Label Content="📝 Ghi chú (nếu có):" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="NotesTextBox" Height="80" Padding="10" FontSize="14" 
+                             TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,15"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
+            <Button Content="Hủy" Width="120" Height="40" Margin="0,0,10,0"
+                    Background="#9E9E9E" Foreground="White" FontWeight="SemiBold"
+                    BorderThickness="0" Cursor="Hand" Click="CancelButton_Click"/>
+            <Button Content="Đặt xe" Width="150" Height="40"
+                    Background="#4CAF50" Foreground="White" FontSize="16" FontWeight="Bold"
+                    BorderThickness="0" Cursor="Hand" Click="BookButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
+

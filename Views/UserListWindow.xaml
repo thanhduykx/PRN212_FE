@@ -7,21 +7,43 @@
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="160"/>
         </Grid.RowDefinitions>
 
+        <!-- Search Box -->
+        <Border Grid.Row="0" Background="White" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="🔍" FontSize="18" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox x:Name="SearchTextBox" Width="300" Height="30" 
+                         Padding="5" VerticalContentAlignment="Center"
+                         TextChanged="SearchTextBox_TextChanged"
+                         Tag="Tìm kiếm theo Email, Tên, Role..."/>
+                <TextBlock Text="Tổng số: " FontWeight="SemiBold" VerticalAlignment="Center" Margin="20,0,5,0"/>
+                <TextBlock x:Name="TotalCountTextBlock" Text="0" FontWeight="Bold" VerticalAlignment="Center" Foreground="#2196F3"/>
+            </StackPanel>
+        </Border>
+
         <!-- DataGrid với style đẹp -->
         <DataGrid x:Name="UsersDataGrid" AutoGenerateColumns="False" SelectionMode="Single"
                   CanUserAddRows="False" CanUserDeleteRows="False"
-                  Grid.Row="0" Margin="0,0,0,10" 
+                  Grid.Row="1" Margin="0,0,0,10" 
                   HeadersVisibility="Column"
                   RowBackground="#FFFFFF" AlternatingRowBackground="#F7F7F7"
                   GridLinesVisibility="None"
                   SelectionChanged="UsersDataGrid_SelectionChanged"
+                  LoadingRow="UsersDataGrid_LoadingRow"
                   FontSize="14" FontWeight="Normal">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTemplateColumn Header="STT" Width="50" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Header}" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
                 <DataGridTextColumn Header="Full Name" Binding="{Binding FullName}" Width="*"/>
                 <DataGridTextColumn Header="Role" Binding="{Binding Role}" Width="100"/>
@@ -30,7 +52,7 @@
         </DataGrid>
 
         <!-- Panel thông tin chi tiết -->
-        <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="15" 
+        <Border Grid.Row="2" Background="White" CornerRadius="10" Padding="15" 
                 Margin="0,0,0,0" >
             <StackPanel Orientation="Vertical" >
                 <TextBlock Text="Thông tin chi tiết" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
@@ -47,28 +69,7 @@
                     <TextBox x:Name="RoleTextBox" Width="120" Margin="0,0,20,0"/>
                     <Label Content="Active:" Width="80" VerticalAlignment="Center"/>
                     <CheckBox x:Name="IsActiveCheckBox" VerticalAlignment="Center"/>
-                    <Button Content="Add" Width="80" Height="35" Margin="20,0,5,0" Background="#4CAF50" Foreground="White" FontWeight="SemiBold"
-                            BorderThickness="0" Cursor="Hand" Click="AddButton_Click">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="{TemplateBinding Background}" CornerRadius="5">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#45A049"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-                    <Button Content="Update" Width="80" Height="35" Margin="5,0,5,0" Background="#2196F3" Foreground="White" FontWeight="SemiBold"
+                    <Button Content="✏️ Cập nhật" Width="120" Height="35" Margin="20,0,5,0" Background="#2196F3" Foreground="White" FontWeight="SemiBold"
                             BorderThickness="0" Cursor="Hand" Click="UpdateButton_Click">
                         <Button.Style>
                             <Style TargetType="Button">
@@ -89,7 +90,7 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button Content="Delete" Width="80" Height="35" Margin="5,0,5,0" Background="#F44336" Foreground="White" FontWeight="SemiBold"
+                    <Button Content="🗑️ Xóa" Width="120" Height="35" Margin="5,0,5,0" Background="#F44336" Foreground="White" FontWeight="SemiBold"
                             BorderThickness="0" Cursor="Hand" Click="DeleteButton_Click">
                         <Button.Style>
                             <Style TargetType="Button">
@@ -110,7 +111,7 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button Content="Refresh" Width="80" Height="35" Margin="5,0,0,0" Background="#FF9800" Foreground="White" FontWeight="SemiBold"
+                    <Button Content="🔄 Làm mới" Width="120" Height="35" Margin="5,0,0,0" Background="#FF9800" Foreground="White" FontWeight="SemiBold"
                             BorderThickness="0" Cursor="Hand" Click="RefreshButton_Click">
                         <Button.Style>
                             <Style TargetType="Button">
